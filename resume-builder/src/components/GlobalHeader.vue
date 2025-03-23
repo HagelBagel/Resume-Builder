@@ -1,15 +1,19 @@
-<script setup>
-
+<script>
+export default {
+  props: ['name', 'address', 'phone', 'email', 'linkedin']
+}
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">Hello World!</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+    <h1 class="green">Contact info</h1>
+    <ul>
+      <li>{{ name }}</li>
+      <li>{{ address }}</li>
+      <li>{{ phone }}</li>
+      <li>{{ email }}</li>
+      <li>{{ linkedin }}</li>
+    </ul>
   </div>
 </template>
 
