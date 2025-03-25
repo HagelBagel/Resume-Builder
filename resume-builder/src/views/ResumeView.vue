@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-3xl">Here comes the resume</h1>
+    <h1 class="text-3xl">Professional Experience:</h1>
     <div class="grid grid-cols-1 gap-4">
       <experience-card
       v-for="exp in experience"

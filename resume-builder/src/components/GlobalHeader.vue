@@ -5,9 +5,11 @@ export default {
 </script>
 
 <template>
-  <div class="header-wrapper w-(--base-width) flex flex-row place-content-between gap-4 p-4">
-    <div class="contact-info bg-mint-500 p-4">
-      <h3 class="green">Contact info</h3>
+  <div
+    class="header-wrapper w-(--base-width) flex flex-row place-content-between gap-4 p-4 border-b-2 border-mint-500 mb-4"
+  >
+    <div class="contact-info p-2">
+      <h3 class="font-bold text-mint-500">Contact info:</h3>
       <ul>
         <li>{{ name }}</li>
         <li>{{ address }}</li>
@@ -16,12 +18,14 @@ export default {
         <li>{{ linkedin }}</li>
       </ul>
     </div>
-    <div class="profile-pic p-4">
-      <img class="h-50 w-50" src="https://cataas.com/cat" alt="Random cat sitting">
+    <div class="profile-pic p-2">
+      <img
+        class="h-40 w-40 rounded-full shadow-md"
+        src="https://cataas.com/cat"
+        alt="Random cat sitting"
+      />
     </div>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

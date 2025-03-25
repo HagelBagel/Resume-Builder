@@ -1,0 +1,9 @@
+body {
+    background-color: #faf3f3;
+}
+
+li.details::marker {
+    color: hotpink;
+    content: '# ';
+    font-size: 1rem;    
+  }
