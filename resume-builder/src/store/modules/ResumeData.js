@@ -10,12 +10,12 @@ export default {
           email: 'elise.dubois@email.com',
           linkedin: 'blinkedin.com/in/elisedubois',
           summary:
-            'Highly motivated and creative Front-End Developer with 5+ years of experience building responsive and user-friendly web applications. Proficient in JavaScript, HTML5, CSS3, and Vue.js. Proven ability to translate design mockups into clean, efficient, and maintainable code. Passionate about creating engaging user experiences and staying up-to-date with the latest web development trends.',
+            'Highly motivated and creative Front-End Developer with 5+ years of experience building responsive and user-friendly web applications.',
         },
         skills: {
-          languages: ['JavaScript (ES6+)', 'HTML5', 'CSS3', 'Sass', 'Less'],
-          frameworks: ['Vue.js', 'Vuex', 'Vue Router', 'React (Basic)', 'jQuery'],
-          tools: ['Git', 'Webpack', 'Babel', 'npm', 'yarn', 'Figma', 'Adobe XD'],
+          languages: ['JavaScript', 'HTML5', 'CSS3', 'Less'],
+          frameworks: ['Vue.js', 'React.js'],
+          tools: ['Git', 'Webpack', 'Figma', 'Adobe XD'],
           methodologies: ['Agile', 'Scrum'],
           other: [
             'Responsive Design',
@@ -69,10 +69,10 @@ export default {
           {
             name: 'Personal Portfolio Website',
             description:
-              'Developed a responsive portfolio website using Vue.js to showcase personal projects and skills.',
+              'A responsive portfolio website using Vue.js to showcase personal projects and skills.',
           },
           {
-            name: 'Interactive Data Visualization Dashboard',
+            name: 'Data Visualization Dashboard',
             description:
               'Created a dynamic dashboard using Vue.js and D3.js to visualize data from a public API.',
           },
