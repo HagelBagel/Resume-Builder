@@ -4,7 +4,7 @@
       <template v-slot:header>Projects</template>
       <template v-slot:body>
         <div v-for="project in projects" :key="project">
-            <p class="mb-2">{{project.name}}:</p>
+            <p class="font-bold mb-2">{{project.name}}:</p>
             <p class="mb-2">{{project.description}}</p>
         </div>        
       </template>

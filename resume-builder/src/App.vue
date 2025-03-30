@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <global-nav></global-nav>
-    <global-header
-      :name="resume.contact.name"
-      :address="resume.contact.address"
-      :phone="resume.contact.phone"
-      :email="resume.contact.email"
-      :linkedin="resume.contact.linkedin"
-    ></global-header>
-    <resume-view></resume-view>
-    <cover-letter-view></cover-letter-view>
+  <div class="flex flex-col">
+    <div class="flex justify-center bg-pink-300">
+      <global-nav class="w-(--base-width)"></global-nav>
+    </div>
+    <div class="flex justify-center">
+      <div class="w-(--base-width)">
+        <global-header
+          :name="resume.contact.name"
+          :address="resume.contact.address"
+          :phone="resume.contact.phone"
+          :email="resume.contact.email"
+          :linkedin="resume.contact.linkedin"
+        ></global-header>
+        <resume-view></resume-view>
+        <cover-letter-view></cover-letter-view>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,12 +31,12 @@ export default {
     GlobalNav,
     GlobalHeader,
     ResumeView,
-    CoverLetterView
+    CoverLetterView,
   },
   computed: {
     resume() {
       const resume = this.$store.getters['resumeData/resume']
-      return resume;
+      return resume
     },
   },
 }

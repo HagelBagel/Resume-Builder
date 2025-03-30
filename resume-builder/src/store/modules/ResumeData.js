@@ -69,12 +69,12 @@ export default {
           {
             name: 'Personal Portfolio Website',
             description:
-              'A responsive portfolio website using Vue.js to showcase personal projects and skills.',
+              'A responsive portfolio website using Vue.js.',
           },
           {
             name: 'Data Visualization Dashboard',
             description:
-              'Created a dynamic dashboard using Vue.js and D3.js to visualize data from a public API.',
+              'Created a dynamic dashboard using Vue.js and D3.js.',
           },
         ],
         languages: ['French: Native', 'English: Fluent'],
