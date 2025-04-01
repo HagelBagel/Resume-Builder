@@ -1,8 +1,9 @@
 <template>
-  <div class="flex flex-col">
-    <div class="flex justify-center bg-pink-300">
+  <div>
+    <global-nav></global-nav>
+    <!-- <div class="flex justify-center bg-pink-300">
       <global-nav class="w-(--base-width)"></global-nav>
-    </div>
+    </div> -->
     <div class="flex justify-center">
       <div class="w-(--base-width)">
         <global-header

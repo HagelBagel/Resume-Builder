@@ -30,6 +30,6 @@ export default {
 
 <style scoped>
 .avatar {
-  box-shadow: -2px 4px 15px 1px #949494;
+  box-shadow: var(--shadow);
 }
 </style>
