@@ -1,9 +1,10 @@
 <template>
   <div>
-    <global-nav></global-nav>
+    <global-nav @toggle-resume="toggleResume" @toggle-cover="toggleCoverLetter" @toggle-edit="toggleEdit"></global-nav>
     <!-- <div class="flex justify-center bg-pink-300">
       <global-nav class="w-(--base-width)"></global-nav>
     </div> -->
+    <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3>
     <div class="flex justify-center">
       <div class="w-(--base-width)">
         <global-header
@@ -13,8 +14,8 @@
           :email="resume.contact.email"
           :linkedin="resume.contact.linkedin"
         ></global-header>
-        <resume-view></resume-view>
-        <cover-letter-view></cover-letter-view>
+        <cover-letter-view v-if="displayCoverLetter"></cover-letter-view>
+        <resume-view v-if="displayResume"></resume-view>
       </div>
     </div>
   </div>
@@ -28,6 +29,13 @@ import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
 
 export default {
+  data() {
+    return {
+      displayCoverLetter: true,
+      displayResume: true,
+      displayEdit: false
+    }
+  },
   components: {
     GlobalNav,
     GlobalHeader,
@@ -40,6 +48,32 @@ export default {
       return resume
     },
   },
+  methods: {
+    toggleCoverLetter(isDisplayCoverLetter) {
+      console.log('Cover letter: ' + isDisplayCoverLetter)
+      if (isDisplayCoverLetter) {
+        this.displayCoverLetter = true;
+      } else {
+        this.displayCoverLetter = false;
+      }
+    },
+    toggleResume(isDisplayResume) {
+      console.log('Resume: ' + isDisplayResume)
+      if (isDisplayResume) {
+        this.displayResume = true;
+      } else {
+        this.displayResume = false;
+      }
+    },
+    toggleEdit(isDisplayEdit) {
+      console.log('Edit mode: ' + isDisplayEdit)
+      if (isDisplayEdit) {
+        this.displayEdit = true;
+      } else {
+        this.displayEdit = false;
+      }
+    } 
+  }
 }
 </script>
 
