@@ -9,13 +9,13 @@ export default {
     class="header-wrapper w-(--base-width) flex flex-row place-content-between gap-4 pr-4 mt-8 mb-8"
   >
     <div class="contact-info flex flex-col justify-center">
-      <h3 class="font-bold text-3xl mb-2">{{ name }}</h3>
+      <h3 class="text-3xl mb-2">{{ name }}</h3>
       <ul>
         <!-- <li>{{ name }}</li> -->
         <li>{{ address }}</li>
         <li>{{ phone }}</li>
         <li>{{ email }}</li>
-        <li>{{ linkedin }}</li>
+        <li><a :href="`${linkedin.linkUrl}`">{{ linkedin.linkText }}</a></li>
       </ul>
     </div>
     <div class="profile-pic p-2">

@@ -1,5 +1,5 @@
 <template>
-  <div class="fabs" role="group" aria-label="Floating action buttons">
+  <div class="fabs no-print" role="group" aria-label="Floating action buttons">
     <!-- buttons will go here -->
     <button @click="btnAction" data-icon="plus" class="fab" title="Open menu" aria-label="Open menu">
       <svg aria-hidden="true" width="48" height="48" viewBox="0 0 48 48">

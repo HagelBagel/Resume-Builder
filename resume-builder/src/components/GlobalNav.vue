@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative no-print">
     <base-fab @btn-action="showMenu"></base-fab>    
     <div v-if="isDisplayMenu" class="fixed right-10 top-30 p-4 bg-pink-200 rounded-xl shadow-(--shadow)">
       <div class="flex flex-col justify-center gap-4 p-2">

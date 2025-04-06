@@ -8,7 +8,10 @@ export default {
           address: '14 Rue du Cherche-Midi, 75006 Paris, France',
           phone: '+33 6 12 34 56 78',
           email: 'elise.dubois@email.com',
-          linkedin: 'blinkedin.com/in/elisedubois',
+          linkedin: {
+            linkText: 'blinkedin.com/in/elisedubois',
+            linkUrl: '#'
+          },
           summary:
             'Highly motivated and creative Front-End Developer with 5+ years of experience building responsive and user-friendly web applications.',
         },
@@ -68,13 +71,13 @@ export default {
         projects: [
           {
             name: 'Personal Portfolio Website',
-            description:
-              'A responsive portfolio website using Vue.js.',
+            description: 'A responsive portfolio website using Vue.js.',
+            url: '#'
           },
           {
             name: 'Data Visualization Dashboard',
-            description:
-              'Created a dynamic dashboard using Vue.js and D3.js.',
+            description: 'Created a dynamic dashboard using Vue.js and D3.js.',
+            url: '#'
           },
         ],
         languages: ['French: Native', 'English: Fluent'],

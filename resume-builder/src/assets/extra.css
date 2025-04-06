@@ -23,3 +23,12 @@ li.details::marker {
   content: '# ';
   font-size: 1rem;    
 }
+
+@media print {
+  .no-print {
+    visibility: hidden;
+  }
+  .page {
+    break-after: page;
+  }
+}
