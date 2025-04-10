@@ -1,5 +1,6 @@
 <template>
   <div>
+    <text-editor theme="snow" v-if="displayEdit"></text-editor>
     <global-nav @toggle-resume="toggleResume" @toggle-cover="toggleCoverLetter" @toggle-edit="toggleEdit"></global-nav>
     <!-- <div class="flex justify-center bg-pink-300">
       <global-nav class="w-(--base-width)"></global-nav>
@@ -27,6 +28,7 @@ import ResumeView from './views/ResumeView.vue'
 import CoverLetterView from './views/CoverLetterView.vue'
 import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
+import TextEditor from './components/TextEditor.vue'
 
 export default {
   data() {
@@ -41,6 +43,7 @@ export default {
     GlobalHeader,
     ResumeView,
     CoverLetterView,
+    TextEditor
   },
   computed: {
     resume() {

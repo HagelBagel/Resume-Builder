@@ -12,9 +12,9 @@ export default {
       <h3 class="text-3xl mb-2">{{ name }}</h3>
       <ul>
         <!-- <li>{{ name }}</li> -->
-        <li>{{ address }}</li>
-        <li>{{ phone }}</li>
-        <li>{{ email }}</li>
+        <li><input class="w-150" type="text" :value="address"></li>
+        <li><input class="w-150" type="text" :value="phone"></li>
+        <li><input class="w-150" type="text" :value="email"></li>
         <li><a :href="`${linkedin.linkUrl}`">{{ linkedin.linkText }}</a></li>
       </ul>
     </div>
