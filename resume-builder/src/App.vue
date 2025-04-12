@@ -1,11 +1,8 @@
 <template>
   <div>
-    <text-editor theme="snow" v-if="displayEdit"></text-editor>
-    <global-nav @toggle-resume="toggleResume" @toggle-cover="toggleCoverLetter" @toggle-edit="toggleEdit"></global-nav>
-    <!-- <div class="flex justify-center bg-pink-300">
-      <global-nav class="w-(--base-width)"></global-nav>
-    </div> -->
-    <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3>
+    <text-editor theme="snow" v-if="displayQuill" :componentToEdit="targetElementId" @handle-text-editor-data="handleTextEditorData"></text-editor>
+    <global-nav @toggle-resume="toggleResume" @toggle-cover="toggleCoverLetter" @toggle-edit="toggleEdit"></global-nav>    
+    <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
     <div class="flex justify-center">
       <div class="w-(--base-width)">
         <global-header
@@ -14,8 +11,8 @@
           :phone="resume.contact.phone"
           :email="resume.contact.email"
           :linkedin="resume.contact.linkedin"
-        ></global-header>
-        <cover-letter-view v-if="displayCoverLetter"></cover-letter-view>
+        ></global-header>       
+        <cover-letter-view v-if="displayCoverLetter" @toggle-edit="toggleEdit"></cover-letter-view>
         <resume-view v-if="displayResume"></resume-view>
       </div>
     </div>
@@ -23,7 +20,6 @@
 </template>
 
 <script>
-// import { RouterLink, RouterView } from 'vue-router'
 import ResumeView from './views/ResumeView.vue'
 import CoverLetterView from './views/CoverLetterView.vue'
 import GlobalNav from './components/GlobalNav.vue'
@@ -35,7 +31,10 @@ export default {
     return {
       displayCoverLetter: true,
       displayResume: true,
-      displayEdit: false
+      displayEdit: false,
+      displayQuill: false,
+      textEditorData: {},
+      targetElementId: ''
     }
   },
   components: {
@@ -47,13 +46,17 @@ export default {
   },
   computed: {
     resume() {
-      const resume = this.$store.getters['resumeData/resume']
-      return resume
+      const resume = this.$store.getters['resumeData/resume'];
+      return resume;
     },
+    coverLetter() {
+      const coverLetter = this.$store.getters['resumeData/coverLetter'];
+      return coverLetter;
+    }
   },
   methods: {
     toggleCoverLetter(isDisplayCoverLetter) {
-      console.log('Cover letter: ' + isDisplayCoverLetter)
+      // console.log('Cover letter: ' + isDisplayCoverLetter);
       if (isDisplayCoverLetter) {
         this.displayCoverLetter = true;
       } else {
@@ -61,20 +64,32 @@ export default {
       }
     },
     toggleResume(isDisplayResume) {
-      console.log('Resume: ' + isDisplayResume)
+      // console.log('Resume: ' + isDisplayResume);
       if (isDisplayResume) {
         this.displayResume = true;
       } else {
         this.displayResume = false;
       }
     },
-    toggleEdit(isDisplayEdit) {
-      console.log('Edit mode: ' + isDisplayEdit)
-      if (isDisplayEdit) {
-        this.displayEdit = true;
-      } else {
+    toggleEdit(isDisplayEdit, editorType, targetElement) {     
+      // console.log('Edit mode: ' + isDisplayEdit);
+      console.log(targetElement.id);
+      this.targetElementId = targetElement.id;
+      if (!isDisplayEdit) {        
         this.displayEdit = false;
+        this.displayQuill = false;
+        return;
+      } 
+
+      if (isDisplayEdit) {
+        if (editorType === 'QUILL') {
+          this.displayQuill = true;
+        }
       }
+    }, 
+    handleTextEditorData(delta, targetElemId) {
+      console.log(delta);
+      console.log(targetElemId);
     } 
   }
 }

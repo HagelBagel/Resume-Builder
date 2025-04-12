@@ -1,6 +1,10 @@
 <template>
-<div class="page pb-4 mb-12 border-b-4 border-(--border) border-dotted">    
-    <h1 class="text-3xl mb-4">Application for Front-End Developer Position</h1>
+<div class="page pb-4 mb-12 border-b-4 border-(--border) border-dotted">      
+    <base-button id="edit-cover-letter" @click="toggleEdit($event)" :buttonText="editBtn"></base-button>
+    <div id="cover-letter-content">
+
+    </div>
+    <!-- <h1 class="text-3xl mb-4">Application for Front-End Developer Position</h1>
 
     <p class="mb-2">Dear Hiring Manager,</p>
 
@@ -15,7 +19,45 @@
     <p class="mb-4">I am confident that my adaptability, collaborative nature, and proven ability to deliver effective front-end solutions would be a valuable asset to your team. Thank you for your time and consideration. My resume provides further detail on my qualifications, and I look forward to the possibility of an interview.</p>
 
     <p class="mb-4">Sincerely,</p>
-    <p class="mb-4">Elise Dubois</p>
+    <p class="mb-4">Elise Dubois</p> -->
 </div>
     
 </template>
+
+<script>
+import BaseButton from '../components/base/BaseButton.vue'
+export default {
+    data() {
+    return {
+      editBtn: 'Edit',      
+      isDisplayEdit: false,
+      editorType: 'QUILL'
+    }
+  },
+  components: {
+    BaseButton
+  },
+  methods: {
+    toggleEdit(event) {
+      this.isDisplayEdit = !this.isDisplayEdit;
+      this.$emit('toggle-edit', this.isDisplayEdit, this.editorType, event.target);
+      console.log('You toggled edit') 
+    }
+  }
+}
+</script>
+
+<style scoped>
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+p.extra {
+    margin-bottom: 2rem;
+}
+</style>

@@ -1,9 +1,3 @@
-<script>
-export default {
-  props: ['name', 'address', 'phone', 'email', 'linkedin'],
-}
-</script>
-
 <template>
   <div
     class="header-wrapper w-(--base-width) flex flex-row place-content-between gap-4 pr-4 mt-8 mb-8"
@@ -27,6 +21,12 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['name', 'address', 'phone', 'email', 'linkedin'],
+}
+</script>
 
 <style scoped>
 .avatar {

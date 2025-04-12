@@ -11,6 +11,7 @@ import Quill from 'quill'
 import 'quill/dist/quill.snow.css' // Or another theme like 'quill/dist/quill.bubble.css'
 
 export default {
+  props: ['targetElementId'],
   data() {
     return {
       quill: null,
@@ -46,10 +47,11 @@ export default {
   },
   methods: {
     saveContent() {
-      let editorResult = document.querySelector('#editorResult');
-      const delta = this.quill.getSemanticHTML();
-      editorResult.innerHTML = delta;
-      console.log(delta);
+      // let editorResult = document.querySelector('#editorResult');
+      const delta = this.quill.getContents();
+      // console.log('Delta is:' + delta);
+      
+      this.$emit('handle-text-editor-data', delta, this.targetElementId);
     },
   },
 }

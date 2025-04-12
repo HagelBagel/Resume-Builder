@@ -5,7 +5,7 @@
       <div class="flex flex-col justify-center gap-4 p-2">
         <base-button @click="toggleResume" :buttonText="resumeBtn"></base-button>
         <base-button @click="toggleCover" :buttonText="coverBtn"></base-button>
-        <base-button @click="toggleEdit" :buttonText="editBtn"></base-button>
+        <!-- <base-button @click="toggleEdit" :buttonText="editBtn"></base-button> -->
       </div>
     </div>
   </div>
@@ -19,11 +19,11 @@ export default {
     return {
       resumeBtn: 'Resume',
       coverBtn: 'Cover letter',
-      editBtn: 'Edit',
+      // editBtn: 'Edit',
       isDisplayMenu: false,
       isDisplayResume: true,
       isDisplayCoverLetter: false,
-      isDisplayEdit: false
+      // isDisplayEdit: false
     }
   },
   components: {
@@ -49,11 +49,11 @@ export default {
       this.$emit('toggle-resume', this.isDisplayResume);
       console.log('You toggled the resume')
     },
-    toggleEdit() {
-      this.isDisplayEdit = !this.isDisplayEdit;
-      this.$emit('toggle-edit', this.isDisplayEdit);
-      console.log('You toggled edit') 
-    }
+    // toggleEdit() {
+    //   this.isDisplayEdit = !this.isDisplayEdit;
+    //   this.$emit('toggle-edit', this.isDisplayEdit);
+    //   console.log('You toggled edit') 
+    // }
   }
 }
 </script>

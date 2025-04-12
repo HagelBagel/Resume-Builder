@@ -82,11 +82,32 @@ export default {
         ],
         languages: ['French: Native', 'English: Fluent'],
       },
+      coverLetter: {
+        title: 'THis is the cover letter heading',
+        body: {}
+      }
+    }
+  },
+  mutations: {
+    addCoverLetterBody(state, payload) {
+      state.coverLetter.body = payload;
+    }
+  },
+  actions: {
+    addToCLBody(context, payload) {
+      context.commit('addCoverLetterBody', payload);
     }
   },
   getters: {
     resume(state) {
       return state.resume
     },
+    coverLetter(state) {
+      return state.coverLetter
+    },
+    coverLetterBody(state) {
+
+    }
+
   },
 }
