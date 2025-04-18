@@ -1,7 +1,16 @@
 <template>
   <div>
-    <text-editor theme="snow" v-if="displayQuill" :componentToEdit="targetElementId" @handle-text-editor-data="handleTextEditorData"></text-editor>
-    <global-nav @toggle-resume="toggleResume" @toggle-cover="toggleCoverLetter" @toggle-edit="toggleEdit"></global-nav>    
+    <text-editor
+      theme="snow"
+      v-if="displayQuill"
+      :componentToEdit="targetElementId"
+      @handle-text-editor-data="handleTextEditorData"
+    ></text-editor>
+    <global-nav
+      @toggle-resume="toggleResume"
+      @toggle-cover="toggleCoverLetter"
+      @toggle-edit="toggleEdit"
+    ></global-nav>
     <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
     <div class="flex justify-center">
       <div class="w-(--base-width)">
@@ -11,7 +20,7 @@
           :phone="resume.contact.phone"
           :email="resume.contact.email"
           :linkedin="resume.contact.linkedin"
-        ></global-header>       
+        ></global-header>
         <cover-letter-view v-if="displayCoverLetter" @toggle-edit="toggleEdit"></cover-letter-view>
         <resume-view v-if="displayResume"></resume-view>
       </div>
@@ -34,7 +43,7 @@ export default {
       displayEdit: false,
       displayQuill: false,
       textEditorData: {},
-      targetElementId: ''
+      targetElementId: '',
     }
   },
   components: {
@@ -42,56 +51,55 @@ export default {
     GlobalHeader,
     ResumeView,
     CoverLetterView,
-    TextEditor
+    TextEditor,
   },
   computed: {
     resume() {
-      const resume = this.$store.getters['resumeData/resume'];
-      return resume;
+      const resume = this.$store.getters['resumeData/resume']
+      return resume
     },
     coverLetter() {
-      const coverLetter = this.$store.getters['resumeData/coverLetter'];
-      return coverLetter;
-    }
+      const coverLetter = this.$store.getters['resumeData/coverLetter']
+      return coverLetter
+    },
   },
   methods: {
     toggleCoverLetter(isDisplayCoverLetter) {
       // console.log('Cover letter: ' + isDisplayCoverLetter);
       if (isDisplayCoverLetter) {
-        this.displayCoverLetter = true;
+        this.displayCoverLetter = true
       } else {
-        this.displayCoverLetter = false;
+        this.displayCoverLetter = false
       }
     },
     toggleResume(isDisplayResume) {
-      // console.log('Resume: ' + isDisplayResume);
       if (isDisplayResume) {
-        this.displayResume = true;
+        this.displayResume = true
       } else {
-        this.displayResume = false;
+        this.displayResume = false
       }
     },
-    toggleEdit(isDisplayEdit, editorType, targetElement) {     
-      // console.log('Edit mode: ' + isDisplayEdit);
-      console.log(targetElement.id);
-      this.targetElementId = targetElement.id;
-      if (!isDisplayEdit) {        
-        this.displayEdit = false;
-        this.displayQuill = false;
-        return;
-      } 
+    toggleEdit(isDisplayEdit, editorType, targetElement) {
+      this.targetElementId = targetElement.id
+      if (!isDisplayEdit) {
+        this.displayEdit = false
+        this.displayQuill = false
+        return
+      }
 
       if (isDisplayEdit) {
         if (editorType === 'QUILL') {
-          this.displayQuill = true;
+          this.displayQuill = true
         }
       }
-    }, 
-    handleTextEditorData(delta, targetElemId) {
-      console.log(delta);
-      console.log(targetElemId);
-    } 
-  }
+    },
+    handleTextEditorData(markup, targetElemId) {
+      this.$store.dispatch({
+        type: 'resumeData/addToCLBody',
+        value: markup,
+      })
+    },
+  },
 }
 </script>
 

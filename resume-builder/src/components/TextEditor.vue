@@ -48,7 +48,7 @@ export default {
   methods: {
     saveContent() {
       // let editorResult = document.querySelector('#editorResult');
-      const delta = this.quill.getContents();
+      const delta = this.quill.getSemanticHTML();
       // console.log('Delta is:' + delta);
       
       this.$emit('handle-text-editor-data', delta, this.targetElementId);

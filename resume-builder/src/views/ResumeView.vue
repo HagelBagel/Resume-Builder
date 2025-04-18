@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
     <div>
-      <h1 class="text-3xl mb-4">About Me:</h1>
+      <h1>About Me:</h1>
       <div class="mt-6 mr-6">
         <summary-card></summary-card>
         <projects-card></projects-card>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div>
-      <h1 class="text-3xl mb-4 ml-8">Resume:</h1>
+      <h1 class="ml-8">Resume:</h1>
       <div class="grid grid-cols-1 gap-4">
         <experience-card
           v-for="exp in experience"

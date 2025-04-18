@@ -83,8 +83,7 @@ export default {
         languages: ['French: Native', 'English: Fluent'],
       },
       coverLetter: {
-        title: 'THis is the cover letter heading',
-        body: {}
+        body: ''
       }
     }
   },
@@ -96,6 +95,8 @@ export default {
   actions: {
     addToCLBody(context, payload) {
       context.commit('addCoverLetterBody', payload);
+      console.log('Added to state');
+      console.log(payload)
     }
   },
   getters: {
@@ -104,9 +105,6 @@ export default {
     },
     coverLetter(state) {
       return state.coverLetter
-    },
-    coverLetterBody(state) {
-
     }
 
   },
