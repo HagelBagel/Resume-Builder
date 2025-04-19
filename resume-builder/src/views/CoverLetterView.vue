@@ -2,7 +2,7 @@
   <div class="page pb-4 mb-12 border-b-4 border-(--border) border-dotted">
     <base-button
       id="edit-cover-letter"
-      @click="toggleEdit($event)"
+      @click="openEdit($event)"
       :buttonText="editBtn"
     ></base-button>
     <div id="cover-letter-content" v-html="savedContent"></div>
@@ -23,9 +23,8 @@ export default {
     BaseButton,
   },
   methods: {
-    toggleEdit(event) {
-      this.isDisplayEdit = !this.isDisplayEdit;
-      this.$emit('toggle-edit', this.isDisplayEdit, this.editorType, event.target);
+    openEdit(event) {
+      this.$emit('open-edit', this.editorType, event.target);
     },
   },
   computed: {

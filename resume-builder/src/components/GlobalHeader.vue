@@ -4,7 +4,7 @@
   >
     <div class="contact-info flex flex-col justify-center">
       <h3 class="text-3xl mb-2">{{ name }}</h3>
-      <ul>
+      <ul class="no-list-style">
         <!-- <li>{{ name }}</li> -->
         <li><input class="w-150" type="text" :value="address"></li>
         <li><input class="w-150" type="text" :value="phone"></li>

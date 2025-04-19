@@ -1,15 +1,18 @@
 <template>
   <div>
-    <text-editor
-      theme="snow"
-      v-if="displayQuill"
-      :componentToEdit="targetElementId"
-      @handle-text-editor-data="handleTextEditorData"
-    ></text-editor>
+    <base-dialog ref="dialogRef">
+      <text-editor
+        theme="snow"
+        :componentToEdit="targetElementId"
+        :existingContentToSet="existingContent"
+        @handle-text-editor-data="handleTextEditorData"
+      ></text-editor>
+    </base-dialog>
+
     <global-nav
       @toggle-resume="toggleResume"
       @toggle-cover="toggleCoverLetter"
-      @toggle-edit="toggleEdit"
+      
     ></global-nav>
     <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
     <div class="flex justify-center">
@@ -21,7 +24,7 @@
           :email="resume.contact.email"
           :linkedin="resume.contact.linkedin"
         ></global-header>
-        <cover-letter-view v-if="displayCoverLetter" @toggle-edit="toggleEdit"></cover-letter-view>
+        <cover-letter-view v-if="displayCoverLetter" @open-edit="openEdit"></cover-letter-view>
         <resume-view v-if="displayResume"></resume-view>
       </div>
     </div>
@@ -34,8 +37,29 @@ import CoverLetterView from './views/CoverLetterView.vue'
 import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
 import TextEditor from './components/TextEditor.vue'
+import BaseDialog from './components/base/BaseDialog.vue'
+import { ref } from 'vue'
 
 export default {
+  setup() {
+    const dialogRef = ref(null)
+
+    const openBaseDialog = () => {
+      dialogRef.value.openDialog()
+    }
+
+    const submitForm = () => {
+      console.log('Form submitted!')
+      dialogRef.value.closeDialog() // Close after submission
+      // You would typically handle form data here
+    }
+
+    return {
+      dialogRef,
+      openBaseDialog,
+      submitForm,
+    }
+  },
   data() {
     return {
       displayCoverLetter: true,
@@ -44,6 +68,7 @@ export default {
       displayQuill: false,
       textEditorData: {},
       targetElementId: '',
+      existingContent: null,
     }
   },
   components: {
@@ -52,6 +77,7 @@ export default {
     ResumeView,
     CoverLetterView,
     TextEditor,
+    BaseDialog,
   },
   computed: {
     resume() {
@@ -65,7 +91,6 @@ export default {
   },
   methods: {
     toggleCoverLetter(isDisplayCoverLetter) {
-      // console.log('Cover letter: ' + isDisplayCoverLetter);
       if (isDisplayCoverLetter) {
         this.displayCoverLetter = true
       } else {
@@ -79,18 +104,21 @@ export default {
         this.displayResume = false
       }
     },
-    toggleEdit(isDisplayEdit, editorType, targetElement) {
-      this.targetElementId = targetElement.id
-      if (!isDisplayEdit) {
-        this.displayEdit = false
-        this.displayQuill = false
-        return
-      }
-
-      if (isDisplayEdit) {
-        if (editorType === 'QUILL') {
-          this.displayQuill = true
+    openEdit(editorType, targetElement) {
+      
+      if (editorType === 'QUILL') {
+        
+        let coverLetterDelta = this.$store.getters['resumeData/coverLetter']
+        let body = coverLetterDelta.body
+        let markup
+        if (body.value) {
+          markup = body.value
+        } else {
+          markup = 'Oops - no html!'
         }
+        // return markup
+        this.existingContent = markup
+        this.openBaseDialog()
       }
     },
     handleTextEditorData(markup, targetElemId) {

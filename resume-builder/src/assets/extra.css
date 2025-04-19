@@ -10,6 +10,8 @@ body {
     background-color: #faf3f3;
 }
 
+/* HEADINGS */
+
 h1, h2, h3 {
   margin-bottom: 1rem;
 }
@@ -22,6 +24,8 @@ h2 {
   font-size: 1.5rem;
 }
 
+/* PARAGRAPHS */
+
 p {
   margin-bottom: 1rem;
 }
@@ -30,8 +34,14 @@ p.extra {
   margin-bottom: 2rem;
 }
 
+/* LISTS */
+
 ul li {
   list-style-type: disc;
+}
+
+.no-list-style li {
+  list-style-type: none;
 }
 
 ol li {

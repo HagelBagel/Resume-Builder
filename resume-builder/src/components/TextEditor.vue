@@ -1,21 +1,26 @@
 <template>
   <div id="text-editor-container" class="w-xl">
     <div ref="editor"></div>
-    <button @click="saveContent" class="bg-slate-300 border-2 p-2">Save</button>
-    <div id="editorResult" class="bg-green-300 mt-6"></div>
+    <base-button class="mt-4" @click="saveContent" :buttonText="saveBtn"></base-button>
+    
   </div>
 </template>
 
 <script>
 import Quill from 'quill'
 import 'quill/dist/quill.snow.css' // Or another theme like 'quill/dist/quill.bubble.css'
+import BaseButton from '../components/base/BaseButton.vue';
 
 export default {
   props: ['targetElementId'],
+  components: {
+    BaseButton,
+  },
   data() {
     return {
       quill: null,
       editorContent: '',
+      saveBtn: 'Save'
     }
   },
   computed: {
