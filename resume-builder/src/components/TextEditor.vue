@@ -29,6 +29,10 @@ export default {
   watch: {
     saveFlag() {
       this.saveContent();
+      this.$store.dispatch({
+        type: 'resumeData/setSave',
+        value: false, //reset saveFlag
+      })
     }
   },
   mounted() {
