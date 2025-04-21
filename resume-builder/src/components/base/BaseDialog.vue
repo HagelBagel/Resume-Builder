@@ -1,36 +1,46 @@
 <template>
   <div v-if="isVisible" class="dialog-overlay">
     <div class="dialog-content">
-      <slot></slot> <button @click="closeDialog">Cancel</button>
+      <slot></slot>
+      <div class="btn-flex-wrapper mt-4">
+        <base-button @click="closeDialog" :buttonText="'Cancel'"></base-button>
+        <slot name="buttons"></slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
+import BaseButton from './BaseButton.vue'
 
 export default {
   name: 'BaseDialog',
+  components: {
+    BaseButton,
+  },
+  
   setup() {
-    const isVisible = ref(false);
+    const isVisible = ref(false)
 
     const openDialog = () => {
-      isVisible.value = true;
-    };
+      isVisible.value = true
+    }
 
     const closeDialog = () => {
-      isVisible.value = false;
+      isVisible.value = false
       // Optionally, emit an event to the parent if needed
-    //   this.$emit('close');
-    };
+      //   this.$emit('close');
+    }
 
     return {
       isVisible,
       openDialog,
       closeDialog,
-    };
+    }
   },
-};
+  
+}
 </script>
 
 <style scoped>
@@ -54,9 +64,9 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-button {
-  margin-top: 15px;
-  padding: 8px 15px;
-  cursor: pointer;
+.btn-flex-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 1rem;
 }
 </style>

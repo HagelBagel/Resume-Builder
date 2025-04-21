@@ -5,14 +5,16 @@
         theme="snow"
         :componentToEdit="targetElementId"
         :existingContentToSet="existingContent"
-        @handle-text-editor-data="handleTextEditorData"
+        
       ></text-editor>
+      <template #buttons>
+        <base-button data-id="btnSaveTextEditorContent" @click="setSaveFlag" :buttonText="'Save'"></base-button>
+      </template>
     </base-dialog>
 
     <global-nav
       @toggle-resume="toggleResume"
-      @toggle-cover="toggleCoverLetter"
-      
+      @toggle-cover="toggleCoverLetter"      
     ></global-nav>
     <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
     <div class="flex justify-center">
@@ -38,6 +40,7 @@ import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
 import TextEditor from './components/TextEditor.vue'
 import BaseDialog from './components/base/BaseDialog.vue'
+import BaseButton from './components/base/BaseButton.vue'
 import { ref } from 'vue'
 
 export default {
@@ -78,6 +81,7 @@ export default {
     CoverLetterView,
     TextEditor,
     BaseDialog,
+    BaseButton
   },
   computed: {
     resume() {
@@ -120,13 +124,13 @@ export default {
         this.existingContent = markup
         this.openBaseDialog()
       }
-    },
-    handleTextEditorData(markup, targetElemId) {
-      this.$store.dispatch({
-        type: 'resumeData/addToCLBody',
-        value: markup,
+    },    
+    setSaveFlag() {
+        this.$store.dispatch({
+        type: 'resumeData/setSave',
+        value: true,
       })
-    },
+    }
   },
 }
 </script>

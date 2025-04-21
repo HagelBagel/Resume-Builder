@@ -7,3 +7,9 @@ export default {
     props: ['buttonText']
 }
 </script>
+
+<style scoped>
+button {
+    cursor: pointer;
+}
+</style>

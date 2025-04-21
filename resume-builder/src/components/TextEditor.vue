@@ -1,15 +1,13 @@
 <template>
-  <div id="text-editor-container" class="w-xl">
+  <div id="text-editor-container" class="w-xl" :buttons="buttons" @save-content="saveContent">
     <div ref="editor"></div>
-    <base-button class="mt-4" @click="saveContent" :buttonText="saveBtn"></base-button>
-    
   </div>
 </template>
 
 <script>
 import Quill from 'quill'
 import 'quill/dist/quill.snow.css' // Or another theme like 'quill/dist/quill.bubble.css'
-import BaseButton from '../components/base/BaseButton.vue';
+import BaseButton from '../components/base/BaseButton.vue'
 
 export default {
   props: ['targetElementId'],
@@ -20,11 +18,18 @@ export default {
     return {
       quill: null,
       editorContent: '',
-      saveBtn: 'Save'
+      buttons: [{ buttonType: 'BaseButton', buttonText: 'Save', clickEvent: 'saveContent' }],
     }
   },
   computed: {
-    savedText() {}
+    saveFlag() {
+      return this.$store.getters['resumeData/saveFlag']
+    },
+  },
+  watch: {
+    saveFlag() {
+      this.saveContent();
+    }
   },
   mounted() {
     this.quill = new Quill(this.$refs.editor, {
@@ -52,14 +57,18 @@ export default {
   },
   methods: {
     saveContent() {
-      // let editorResult = document.querySelector('#editorResult');
-      const delta = this.quill.getSemanticHTML();
-      // console.log('Delta is:' + delta);
-      
-      this.$emit('handle-text-editor-data', delta, this.targetElementId);
+      // I need to trigger this from a button in a sibling component (BaseDialog), 
+      // which is inserted from the common parent
+      const markup = this.quill.getSemanticHTML()
+      console.log('Delta is:' + markup)
+
+      this.$store.dispatch({
+        type: 'resumeData/addToCLBody',
+        value: markup,
+      })
+      // this.$emit('handle-text-editor-data', delta, this.targetElementId);
     },
   },
+  
 }
 </script>
-
-

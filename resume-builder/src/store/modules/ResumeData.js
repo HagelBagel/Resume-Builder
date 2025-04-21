@@ -83,28 +83,36 @@ export default {
         languages: ['French: Native', 'English: Fluent'],
       },
       coverLetter: {
-        body: ''
-      }
+        body: '',
+      },
+      saveFlag: false
     }
   },
   mutations: {
     addCoverLetterBody(state, payload) {
       state.coverLetter.body = payload;
+    }, 
+    setSaveFlag(state, payload) {
+      state.saveFlag = payload;
     }
   },
   actions: {
     addToCLBody(context, payload) {
-      context.commit('addCoverLetterBody', payload);
-      console.log('Added to state');
-      console.log(payload)
+      context.commit('addCoverLetterBody', payload);      
+    }, 
+    setSave(context, payload) {
+      context.commit('setSaveFlag', payload);
     }
   },
   getters: {
     resume(state) {
-      return state.resume
+      return state.resume;
     },
     coverLetter(state) {
-      return state.coverLetter
+      return state.coverLetter;
+    },
+    saveFlag(state) {
+      return state.saveFlag;
     }
 
   },
