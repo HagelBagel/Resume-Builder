@@ -1,19 +1,16 @@
 <template>
   <div id="text-editor-container" class="w-xl" :buttons="buttons" @save-content="saveContent">
-    <div ref="editor"></div>
+    <div ref="editor"></div>    
   </div>
 </template>
 
 <script>
 import Quill from 'quill'
 import 'quill/dist/quill.snow.css' // Or another theme like 'quill/dist/quill.bubble.css'
-import BaseButton from '../components/base/BaseButton.vue'
 
 export default {
   props: ['targetElementId'],
-  components: {
-    BaseButton,
-  },
+  
   data() {
     return {
       quill: null,
