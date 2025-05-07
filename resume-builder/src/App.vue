@@ -1,17 +1,5 @@
 <template>
-  <div>
-    <base-dialog ref="dialogRef">
-      <text-editor
-        theme="snow"
-        :componentToEdit="targetElementId"
-        :existingContentToSet="existingContent"
-        
-      ></text-editor>
-      <template #buttons>
-        <base-button data-id="btnSaveTextEditorContent" @click="setSaveFlag" :buttonText="'Save'"></base-button>
-      </template>
-    </base-dialog>
-
+  <div>    
     <global-nav
       @toggle-resume="toggleResume"
       @toggle-cover="toggleCoverLetter"      
@@ -26,7 +14,7 @@
           :email="resume.contact.email"
           :linkedin="resume.contact.linkedin"
         ></global-header>
-        <cover-letter-view v-if="displayCoverLetter" @open-edit="openEdit"></cover-letter-view>
+        <cover-letter-view v-if="displayCoverLetter"></cover-letter-view>
         <resume-view v-if="displayResume"></resume-view>
       </div>
     </div>
@@ -38,40 +26,13 @@ import ResumeView from './views/ResumeView.vue'
 import CoverLetterView from './views/CoverLetterView.vue'
 import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
-import TextEditor from './components/TextEditor.vue'
-import BaseDialog from './components/base/BaseDialog.vue'
-import BaseButton from './components/base/BaseButton.vue'
-import { ref } from 'vue'
 
 export default {
-  setup() {
-    const dialogRef = ref(null)
-
-    const openBaseDialog = () => {
-      dialogRef.value.openDialog()
-    }
-
-    const submitForm = () => {
-      console.log('Form submitted!')
-      dialogRef.value.closeDialog() // Close after submission
-      // You would typically handle form data here
-    }
-
-    return {
-      dialogRef,
-      openBaseDialog,
-      submitForm,
-    }
-  },
+ 
   data() {
     return {
       displayCoverLetter: true,
       displayResume: true,
-      displayEdit: false,
-      displayQuill: false,
-      textEditorData: {},
-      targetElementId: '',
-      existingContent: null,
     }
   },
   components: {
@@ -79,9 +40,6 @@ export default {
     GlobalHeader,
     ResumeView,
     CoverLetterView,
-    TextEditor,
-    BaseDialog,
-    BaseButton
   },
   computed: {
     resume() {
@@ -107,30 +65,7 @@ export default {
       } else {
         this.displayResume = false
       }
-    },
-    openEdit(editorType, targetElement) {
-      
-      if (editorType === 'QUILL') {
-        
-        let coverLetterDelta = this.$store.getters['resumeData/coverLetter']
-        let body = coverLetterDelta.body
-        let markup
-        if (body.value) {
-          markup = body.value
-        } else {
-          markup = 'Oops - no html!'
-        }
-        // return markup
-        this.existingContent = markup
-        this.openBaseDialog()
-      }
-    },    
-    setSaveFlag() {
-        this.$store.dispatch({
-        type: 'resumeData/setSave',
-        value: true,
-      })
-    }
+    },   
   },
 }
 </script>
