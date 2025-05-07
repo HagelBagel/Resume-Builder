@@ -6,7 +6,7 @@
 
 <script>
 import Quill from 'quill'
-import 'quill/dist/quill.snow.css' // Or another theme like 'quill/dist/quill.bubble.css'
+import 'quill/dist/quill.snow.css' 
 
 export default {
   props: ['targetElementId'],
