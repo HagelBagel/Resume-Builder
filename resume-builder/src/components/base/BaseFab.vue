@@ -40,22 +40,22 @@ export default {
   place-items: center;
   gap: var(--_viewport-margin);
 
-  inset-block: var(--_viewport-margin) auto;
+  inset-block: auto var(--_viewport-margin);
   inset-inline: auto var(--_viewport-margin);
 }
 
 .fab {
   --_size: 2rem;
-  --pink-3: rgb(255, 153, 204);
-  --pink-4: rgb(255, 125, 190);
-  --pink-6: rgb(251, 81, 166);
-  --pink-7: rgb(254, 31, 143);
+  --gray-3: rgb(119, 119, 119);
+  --gray-4: rgb(88, 88, 88);
+  --gray-6: rgb(78, 78, 78);
+  --gray-7: rgb(51, 51, 51);
   --radius-round: 50%;
 
-  --_light-bg: var(--pink-6);
-  --_light-bg-hover: var(--pink-7);
-  --_dark-bg: var(--pink-4);
-  --_dark-bg-hover: var(--pink-3);
+  --_light-bg: var(--gray-6);
+  --_light-bg-hover: var(--gray-7);
+  --_dark-bg: var(--gray-4);
+  --_dark-bg-hover: var(--gray-3);
   --_bg: var(--_light-bg);
 
   --_light-fg: white;
