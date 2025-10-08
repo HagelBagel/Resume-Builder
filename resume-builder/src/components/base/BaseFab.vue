@@ -45,17 +45,14 @@ export default {
 }
 
 .fab {
-  --_size: 2rem;
-  --gray-3: rgb(119, 119, 119);
-  --gray-4: rgb(88, 88, 88);
-  --gray-6: rgb(78, 78, 78);
-  --gray-7: rgb(51, 51, 51);
+  --_size: 2rem;  
+  --mint-6: var(--color-mint-500);
+  --mint-7: rgb(103, 168, 146);
   --radius-round: 50%;
 
-  --_light-bg: var(--gray-6);
-  --_light-bg-hover: var(--gray-7);
-  --_dark-bg: var(--gray-4);
-  --_dark-bg-hover: var(--gray-3);
+  --_light-bg: var(--mint-6);
+  --_light-bg-hover: var(--mint-7);
+  
   --_bg: var(--_light-bg);
 
   --_light-fg: white;
@@ -94,17 +91,6 @@ export default {
 
 .fab:is(:active, :hover, :focus-visible) {
   --_bg: var(--_light-bg-hover);
-
-  /* @media (--OSdark) {
-      --_bg: var(--_dark-bg-hover);      
-    } */
 }
 
-/* .fab:not(:first-of-type) {
-  z-index: -1;
-} */
-
-.fab[data-icon='plus']:hover > svg {
-  transform: rotateZ(-0.125turn);
-}
 </style>
