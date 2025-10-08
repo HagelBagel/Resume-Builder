@@ -1,5 +1,6 @@
 export const resume = {
     contact: {
+      photoUrl: 'https://cataas.com/cat',
       name: 'Elise Dubois',
       address: '14 Rue du Cherche-Midi, 75006 Paris, France',
       phone: '+33 6 12 34 56 78',

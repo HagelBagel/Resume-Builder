@@ -8,6 +8,7 @@
     <div class="flex justify-center">
       <div class="w-(--base-width)">
         <global-header
+          :photoUrl="resume.contact.photoUrl"
           :name="resume.contact.name"
           :address="resume.contact.address"
           :phone="resume.contact.phone"

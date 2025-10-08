@@ -6,18 +6,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      editBtn: 'Edit',
-      isDisplayEdit: false,
-      editorType: 'QUILL',
-    }
-  }, 
-  methods: {
-    openEdit(event) {
-      this.$emit('open-edit', this.editorType, event.target);
-    },
-  },
   computed: {
     savedContent() {
       const coverLetterArray = this.$store.getters['resumeData/coverLetter'];      

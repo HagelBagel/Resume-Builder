@@ -3,47 +3,47 @@
     <base-fab @btn-action="showMenu"></base-fab>    
     <div v-if="isDisplayMenu" class="fixed right-10 top-30 p-4 bg-pink-200 rounded-xl shadow-(--shadow)">
       <div class="flex flex-col justify-center gap-4 p-2">
-        <base-button @click="toggleResume" :buttonText="resumeBtn"></base-button>
-        <base-button @click="toggleCover" :buttonText="coverBtn"></base-button>        
+        <base-toggle 
+          v-model="isDisplayResume" 
+          label="Resume" 
+          @update:modelValue="toggleResume"
+        />
+        <base-toggle 
+          v-model="isDisplayCoverLetter" 
+          label="Cover Letter" 
+          @update:modelValue="toggleCover"
+        />      
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from './base/BaseButton.vue'
+import BaseToggle from './base/BaseToggle.vue'
 import BaseFab from './base/BaseFab.vue'
 export default {
   data() {
     return {
-      resumeBtn: 'Resume',
-      coverBtn: 'Cover letter',
       isDisplayMenu: false,
       isDisplayResume: true,
       isDisplayCoverLetter: false
     }
   },
   components: {
-    BaseButton,
+    BaseToggle,
     BaseFab,
   },
   methods: {
     showMenu(isButtonOn) {
-      if (isButtonOn) {
-        this.isDisplayMenu = true;
-      } else {
-        this.isDisplayMenu = false;
-      }
+      this.isDisplayMenu = isButtonOn;
     },
-    toggleCover() {
-      this.isDisplayCoverLetter = !this.isDisplayCoverLetter;
-      this.$emit('toggle-cover', this.isDisplayCoverLetter);
-      console.log('You toggled the cover letter')
+    toggleCover(value) {
+      this.$emit('toggle-cover', value);
+      console.log('You toggled the cover letter:', value)
     },
-    toggleResume() {
-      this.isDisplayResume = !this.isDisplayResume;
-      this.$emit('toggle-resume', this.isDisplayResume);
-      console.log('You toggled the resume')
+    toggleResume(value) {
+      this.$emit('toggle-resume', value);
+      console.log('You toggled the resume:', value)
     }
   }
 }

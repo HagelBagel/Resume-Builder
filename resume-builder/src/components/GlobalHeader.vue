@@ -14,9 +14,9 @@
     </div>
     <div class="profile-pic p-2">
       <img
-        class="avatar h-40 w-40 rounded-full"
-        src="https://cataas.com/cat"
-        alt="Random cat sitting"
+        class="avatar object-fill h-40 w-40 rounded-full"
+        :src="photo"
+        alt="Photo of applicant"
       />
     </div>
   </div>
@@ -24,7 +24,12 @@
 
 <script>
 export default {
-  props: ['name', 'address', 'phone', 'email', 'linkedin'],
+  props: ['photoUrl', 'name', 'address', 'phone', 'email', 'linkedin'],
+  computed: {
+        photo() {
+          return this.photoUrl;
+        }
+    },
 }
 </script>
 
