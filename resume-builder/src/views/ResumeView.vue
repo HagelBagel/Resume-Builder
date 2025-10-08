@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row">
-    <div>
-      <h1>About Me:</h1>
-      <div class="mt-6 mr-6">
+  <div class="flex flex-col lg:flex-row gap-4 lg:gap-8">
+    <div class="lg:w-1/3">
+      <h1 class="text-xl sm:text-2xl lg:text-3xl mb-4">About Me:</h1>
+      <div class="mt-2 sm:mt-4 lg:mt-6">
         <summary-card></summary-card>
         <projects-card></projects-card>
         <div>
@@ -12,9 +12,9 @@
         <skills-card></skills-card>
       </div>
     </div>
-    <div>
-      <h1 class="ml-8">Resume:</h1>
-      <div class="grid grid-cols-1 gap-4">
+    <div class="lg:w-2/3">
+      <h1 class="text-xl sm:text-2xl lg:text-3xl mb-4 lg:ml-8">Resume:</h1>
+      <div class="grid grid-cols-1 gap-2 sm:gap-4">
         <experience-card
           v-for="exp in experience"
           :key="exp"

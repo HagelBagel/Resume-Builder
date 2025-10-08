@@ -5,8 +5,8 @@
       @toggle-cover="toggleCoverLetter"      
     ></global-nav>
     <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
-    <div class="flex justify-center">
-      <div class="w-(--base-width)">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="w-full">
         <global-header
           :photoUrl="resume.contact.photoUrl"
           :name="resume.contact.name"

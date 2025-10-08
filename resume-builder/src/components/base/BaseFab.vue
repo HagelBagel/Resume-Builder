@@ -30,22 +30,30 @@ export default {
 <style scoped>
 
 .fabs {
-  --_viewport-margin: 2.5vmin;
-  --layer-1: 1;
+  --_viewport-margin-mobile: 1rem;
+  --_viewport-margin-desktop: 1.5rem;
+  --layer-1: 999;
 
   position: fixed;
   z-index: var(--layer-1);
   display: flex;
   flex-direction: column-reverse;
   place-items: center;
-  gap: var(--_viewport-margin);
 
-  inset-block: auto var(--_viewport-margin);
-  inset-inline: auto var(--_viewport-margin);
+  inset-block: auto var(--_viewport-margin-mobile);
+  inset-inline: auto var(--_viewport-margin-mobile);
+}
+
+@media (min-width: 640px) {
+  .fabs {
+    inset-block: auto var(--_viewport-margin-desktop);
+    inset-inline: auto var(--_viewport-margin-desktop);
+  }
 }
 
 .fab {
-  --_size: 2rem;  
+  --_size-mobile: 2.5rem;
+  --_size-desktop: 3rem;
   --mint-6: var(--color-mint-500);
   --mint-7: rgb(103, 168, 146);
   --radius-round: 50%;
@@ -55,42 +63,46 @@ export default {
   
   --_bg: var(--_light-bg);
 
-  --_light-fg: white;
-  --_dark-fg: black;
-  --_fg: var(--_light-fg);
-
-  padding: calc(var(--_size) / 2);
-
+  inline-size: var(--_size-mobile);
+  block-size: var(--_size-mobile);
   border-radius: var(--radius-round);
-  aspect-ratio: 1;
-
   background: var(--_bg);
-  /* color: var(--_fg); */
   color: white;
-  /* box-shadow: var(--shadow-4); */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .fab {
+    inline-size: var(--_size-desktop);
+    block-size: var(--_size-desktop);
+  }
 }
 .fab > svg {
-    --_size: 2rem;
-  inline-size: var(--_size);
-  block-size: var(--_size);  
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
 
-  @media (--motionOK) {
-    will-change: transform;
-    transition: transform 0.5s var(--ease-squish-3);
+@media (min-width: 640px) {
+  .fab > svg {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
   }
 }
 
+
+.fab:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  --_bg: var(--_light-bg-hover);
+}
 
 .fab:active {
-  box-shadow: var(--shadow-2);
-
-  @media (--motionOK) {
-    transform: translateY(2%);
-  }
-}
-
-.fab:is(:active, :hover, :focus-visible) {
-  --_bg: var(--_light-bg-hover);
+  transform: scale(0.95);
 }
 
 </style>
