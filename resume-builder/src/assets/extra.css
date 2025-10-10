@@ -7,7 +7,7 @@ html {
   }
 
 body {
-    background-color: #faf3f3;
+    background-color: var(--body-bg);
 }
 
 /* HEADINGS */

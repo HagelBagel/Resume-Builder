@@ -1,7 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
+  --body-bg: #faf3f3;
   --color-mint-500: oklch(0.72 0.11 178);
+  --color-mint-200: oklch(0.917 0.031 181.7);
   --text-grey: #555555;
   --base-width: 55rem;
   --text: rgb(61, 61, 65);

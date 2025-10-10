@@ -5,7 +5,8 @@
       @toggle-cover="toggleCoverLetter"      
     ></global-nav>
     <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+    <top-bar></top-bar>
+    <div id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-20 sm:pt-24">
       <div class="w-full">
         <global-header
           :photoUrl="resume.contact.photoUrl"
@@ -27,6 +28,7 @@ import ResumeView from './views/ResumeView.vue'
 import CoverLetterView from './views/CoverLetterView.vue'
 import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
+import TopBar from './components/TopBar.vue'
 
 export default {
  
@@ -41,6 +43,7 @@ export default {
     GlobalHeader,
     ResumeView,
     CoverLetterView,
+    TopBar
   },
   computed: {
     resume() {

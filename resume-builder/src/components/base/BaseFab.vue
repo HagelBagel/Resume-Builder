@@ -1,11 +1,11 @@
 <template>
   <div class="fabs no-print" role="group" aria-label="Floating action buttons">
     <!-- buttons will go here -->
-    <button @click="btnAction" data-icon="plus" class="fab" title="Open menu" aria-label="Open menu">
+    <button @click="btnAction" data-icon="plus" class="fab bg-(--color-mint-200) border-2 border-gray-300 hover:border-gray-400 rounded-full" title="Open menu" aria-label="Open menu">
       <svg aria-hidden="true" width="48" height="48" viewBox="0 0 48 48">
-        <circle r="4" cx="24" cy="8" fill="white"></circle>
-        <circle r="4" cx="24" cy="24" fill="white"></circle>
-        <circle r="4" cx="24" cy="40" fill="white"></circle>
+        <circle r="4" cx="24" cy="8" fill="black"></circle>
+        <circle r="4" cx="24" cy="24" fill="black"></circle>
+        <circle r="4" cx="24" cy="40" fill="black"></circle>
       </svg>
     </button>
   </div>
@@ -54,7 +54,7 @@ export default {
 .fab {
   --_size-mobile: 2.5rem;
   --_size-desktop: 3rem;
-  --mint-6: var(--color-mint-500);
+  --mint-6: var(--color-mint-200);
   --mint-7: rgb(103, 168, 146);
   --radius-round: 50%;
 
@@ -65,13 +65,20 @@ export default {
 
   inline-size: var(--_size-mobile);
   block-size: var(--_size-mobile);
-  border-radius: var(--radius-round);
+  /* border: 2px solid;
+  border-color: gray;
   background: var(--_bg);
+  border-radius: var(--radius-round); */
   color: white;
-  border: none;
+  
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
+
+  /* Add flex centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 640px) {

@@ -12,7 +12,7 @@
       leave-from-class="transform translate-x-0 opacity-100"
       leave-to-class="transform translate-x-full opacity-0"
     >
-      <div v-if="isDisplayMenu" class="fixed right-2 bottom-20 sm:right-4 sm:bottom-24 md:right-8 md:bottom-30 py-2 sm:py-3 md:py-4 border-b-4 border-(--border) border-dotted bg-white rounded-lg shadow-lg max-w-xs sm:max-w-sm">
+      <div v-if="isDisplayMenu" class="fixed right-2 bottom-20 sm:right-4 sm:bottom-24 md:right-8 px-4 py-2 md:py-4 bg-(--body-bg) rounded-lg shadow-(--shadow) max-w-xs sm:max-w-sm">
         <div class="flex flex-col justify-center gap-2 sm:gap-3 md:gap-4 p-1 sm:p-2">
           <base-toggle 
             v-model="isDisplayResume" 

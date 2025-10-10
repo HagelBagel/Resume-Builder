@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center gap-2 sm:gap-3">
-    <label :for="toggleId" class="text-xs sm:text-sm font-medium text-gray-700 min-w-0 flex-shrink-0">
+    <label :for="toggleId" class="font-medium text-gray-700 min-w-0 flex-shrink-0">
       {{ label }}
     </label>
     <div class="relative flex-shrink-0">
@@ -20,8 +20,8 @@
       >
         <div
           :class="[
-            'dot absolute top-0.5 w-3 h-3 sm:top-1 sm:w-4 sm:h-4 bg-white rounded-full transition-transform duration-200',
-            modelValue ? 'translate-x-4 sm:translate-x-5' : 'translate-x-0.5 sm:translate-x-1'
+            'dot absolute top-1/2 left-0.5 sm:left-1 w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full transition-all duration-200 transform -translate-y-1/2',
+            modelValue ? 'translate-x-3 sm:translate-x-4' : 'translate-x-0'
           ]"
         ></div>
       </div>
