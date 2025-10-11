@@ -13,14 +13,14 @@
       />
       <div
         :class="[
-          'block w-8 h-5 sm:w-10 sm:h-6 rounded-full transition-colors duration-200 cursor-pointer',
-          modelValue ? 'bg-mint-500' : 'bg-gray-300'
+          'block w-8 h-5 sm:w-10 sm:h-6 rounded-full border-2 border-gray-300 transition-colors duration-200 cursor-pointer',
+          modelValue ? 'bg-mint-200' : 'bg-gray-300'
         ]"
         @click="$emit('update:modelValue', !modelValue)"
       >
         <div
           :class="[
-            'dot absolute top-1/2 left-0.5 sm:left-1 w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full transition-all duration-200 transform -translate-y-1/2',
+            'dot absolute top-1/2 left-0.5 sm:left-1 w-4 h-4 sm:w-4 sm:h-4 bg-gray-400 rounded-full transition-all duration-200 transform -translate-y-1/2',
             modelValue ? 'translate-x-3 sm:translate-x-4' : 'translate-x-0'
           ]"
         ></div>

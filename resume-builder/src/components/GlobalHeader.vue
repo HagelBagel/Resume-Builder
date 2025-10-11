@@ -1,8 +1,8 @@
 <template>
-  <div class="header-wrapper w-full flex flex-col sm:flex-row sm:place-content-between gap-4 sm:gap-6 lg:gap-8 mt-4 sm:mt-6 lg:mt-8 mb-4 sm:py-4 sm:mb-6 lg:mb-8 sm:border-b-4 sm:border-(--border) sm:border-dotted">
+  <div class="header-wrapper w-full flex flex-col sm:flex-row sm:place-content-between gap-4 sm:gap-6 lg:gap-8 mt-4 sm:mt-6 lg:mt-8 mb-4 sm:py-4 sm:mb-6 lg:mb-8 border-b-4 border-(--border) border-dotted">
     <div class="contact-info flex flex-col justify-center order-2 sm:order-1">
       <h3 class="text-2xl sm:text-3xl lg:text-4xl mb-2 text-center sm:text-left">{{ name }}</h3>
-      <ul class="no-list-style space-y-1 sm:space-y-2 text-center sm:text-left">
+      <ul class="no-list-style space-y-1 sm:space-y-2 text-center sm:text-left pb-2">
         <li><span class="w-full sm:w-40 lg:w-150 text-sm sm:text-base py-1">{{ address }}</span></li>
         <li><span class="w-full sm:w-40 lg:w-150 text-sm sm:text-base py-1">{{ phone }}</span></li>
         <li><span class="w-full sm:w-40 lg:w-150 text-sm sm:text-base py-1">{{ email }}</span></li>

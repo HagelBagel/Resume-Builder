@@ -82,7 +82,7 @@ export const resume = {
 
 export const coverLetter = {  
   body: `
-<p class="subject">Subject: Application for Front-End Developer Position</p>
+<p class="subject">Application for Front-End Developer Position @ Shmoogle</p>
 <p>Dear Hiring Manager,</p>
 <p>Schmoogle's innovative spirit in information access deeply resonates with me, and I was thrilled to see the Front-End Developer opening on [Platform]. My passion for creating intuitive user interfaces, coupled with my strong skills in JavaScript, HTML, CSS, and Vue.js, makes me a confident candidate to contribute to your dynamic team.</p>
 <p>Throughout my five years as a Front-End Developer, I've gained a comprehensive understanding of web development. At WebCraft Innovations, I significantly enhanced their e-commerce platform by developing a Vue.js-based product filtering system, resulting in a 30% improvement in search efficiency. I also focused on building reusable UI components and optimizing website performance.</p>

@@ -24,6 +24,11 @@ h2 {
   font-size: 1.5rem;
 }
 
+.subject {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
 /* PARAGRAPHS */
 
 p {
@@ -61,6 +66,8 @@ li.details::marker {
   content: '# ';
   font-size: 1rem;    
 }
+
+
 
 @media print {
   .no-print {

@@ -1,7 +1,7 @@
 <template>
   <div class="fabs no-print" role="group" aria-label="Floating action buttons">
     <!-- buttons will go here -->
-    <button @click="btnAction" data-icon="plus" class="fab bg-(--color-mint-200) border-2 border-gray-300 hover:border-gray-400 rounded-full" title="Open menu" aria-label="Open menu">
+    <button @click="btnAction" data-icon="plus" class="fab bg-(--color-mint-200) border-2 border-gray-400 hover:border-gray-400 rounded-full" title="Open menu" aria-label="Open menu">
       <svg aria-hidden="true" width="48" height="48" viewBox="0 0 48 48">
         <circle r="4" cx="24" cy="8" fill="black"></circle>
         <circle r="4" cx="24" cy="24" fill="black"></circle>
@@ -72,7 +72,8 @@ export default {
   color: white;
   
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+  box-shadow: -5px 5px 21px 4px #c5c5c5;
   transition: all 0.2s ease;
 
   /* Add flex centering */

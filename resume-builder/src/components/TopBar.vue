@@ -20,8 +20,8 @@
         @click="toggleHelp"
         :class="[
           'bg-white hover:bg-gray-100 text-gray-700 rounded-full transition-all duration-300 ease-in-out flex items-center justify-center border-2 transition-colors',
-          showHelpText ? 'border-mint-500 bg-mint-50' : 'border-gray-300 hover:border-gray-400',
-          isScrolled ? 'w-6 h-6 text-xs' : 'w-10 h-10 text-base'
+          showHelpText ? 'border-mint-500 bg-mint-50' : 'border-gray-400 hover:border-gray-500',
+          isScrolled ? 'w-8 h-8 text-xs' : 'w-10 h-10 text-base'
         ]"
         aria-label="Help"
         :title="showHelpText ? 'Hide help' : 'Get help'"
