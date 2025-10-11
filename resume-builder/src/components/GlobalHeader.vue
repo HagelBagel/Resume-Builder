@@ -24,7 +24,7 @@ export default {
   props: ['photoUrl', 'name', 'address', 'phone', 'email', 'linkedin'],
   computed: {
     photo() {
-      return this.photoUrl;
+      return this.photoUrl ? this.photoUrl : 'https://via.placeholder.com/150';
     }
   },
 }

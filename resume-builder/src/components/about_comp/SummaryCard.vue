@@ -17,7 +17,7 @@ export default {
     summary() {
       const resume = this.$store.getters['resumeData/resume']
       const summary = resume.contact.summary;
-      return summary;
+      return summary ? summary : 'No summary provided.';
     },
   },
 }

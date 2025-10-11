@@ -9,8 +9,8 @@
 export default {
   computed: {
     savedContent() {
-      const coverLetterArray = this.$store.getters['resumeData/coverLetter'];      
-      return coverLetterArray;
+      const coverLetterData = this.$store.getters['resumeData/coverLetter'];
+      return coverLetterData || { body: '' };
     }
   },
 }

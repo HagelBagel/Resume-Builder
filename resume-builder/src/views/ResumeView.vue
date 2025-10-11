@@ -49,7 +49,7 @@ export default {
     experience() {
       const resume = this.$store.getters['resumeData/resume']
       const experience = resume.experience
-      return experience
+      return experience ? experience : {};
     },
   },
 }

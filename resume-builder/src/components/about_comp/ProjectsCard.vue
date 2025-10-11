@@ -22,7 +22,7 @@ export default {
     projects() {
       const resume = this.$store.getters['resumeData/resume']
       const projects = resume.projects
-      return projects
+      return Array.isArray(projects) ? projects : [];
     },
   },
 }

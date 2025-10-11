@@ -21,7 +21,7 @@ export default {
     languages() {
       const resume = this.$store.getters['resumeData/resume']
       const languages = resume.languages
-      return languages
+      return Array.isArray(languages) ? languages : [];
     },
   },
 }

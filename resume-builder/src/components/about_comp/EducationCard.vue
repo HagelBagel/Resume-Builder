@@ -23,7 +23,7 @@ export default {
     education() {
       const resume = this.$store.getters['resumeData/resume']
       const education = resume.education
-      return education
+      return education ? education : { degree: '', institution: '', dates: '' };
     },
   },
 }

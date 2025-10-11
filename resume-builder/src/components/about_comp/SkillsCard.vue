@@ -42,7 +42,7 @@ export default {
       const resume = this.$store.getters['resumeData/resume']
       const skills = resume.skills
       // console.log(skills)
-      return skills
+      return skills ? skills : { languages: [], frameworks: [], tools: [] };
     },
   },
 }

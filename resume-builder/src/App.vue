@@ -4,8 +4,15 @@
       @toggle-resume="toggleResume"
       @toggle-cover="toggleCoverLetter"      
     ></global-nav>
-    <!-- <h3 v-if="displayEdit" class="text-red-500">EDIT MODE</h3> -->
     <top-bar></top-bar>
+
+  <!-- Add loading state -->
+    <div v-if="isLoading" class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-20 sm:pt-24">
+      <div class="flex justify-center items-center h-64">
+        <div class="text-gray-500">Loading...</div>
+      </div>
+    </div>
+
     <div id="main-content" class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-20 sm:pt-24">
       <div class="w-full">
         <global-header
@@ -36,6 +43,7 @@ export default {
     return {
       displayCoverLetter: true,
       displayResume: true,
+      isLoading: false,
     }
   },
   components: {
@@ -48,12 +56,18 @@ export default {
   computed: {
     resume() {
       const resume = this.$store.getters['resumeData/resume']
-      return resume
+      return resume || { contact: {} }; //null check
     },
     coverLetter() {
       const coverLetter = this.$store.getters['resumeData/coverLetter']
-      return coverLetter
+      return coverLetter || { body: '' }; //null check
     },
+  },
+  mounted() {
+    // Simulate data loading complete
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 100);
   },
   methods: {
     toggleCoverLetter(isDisplayCoverLetter) {

@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "npm run build && npm run upload",
+    "upload": "node deploy.js",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -24,6 +26,7 @@
     "@vue/eslint-config-prettier": "^10.2.0",
     "eslint": "^9.21.0",
     "eslint-plugin-vue": "~10.0.0",
+    "ftp": "^0.3.10",
     "globals": "^16.0.0",
     "prettier": "3.5.3",
     "vite": "^6.2.1",

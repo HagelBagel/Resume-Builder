@@ -12,10 +12,11 @@ export default {
  
   getters: {
     resume(state) {
-      return state.resume;
+      return state.resume || {};
     },
     coverLetter(state) {
-      return state.coverLetter;
+      return state.coverLetter || { body: '' };
+      // return state.coverLetter;
     }
   }
 }
