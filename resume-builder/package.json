@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "deploy": "npm run build && npm run upload",
-    "upload": "node deploy.js",
+    "upload": "node deploy.cjs",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -24,6 +24,7 @@
     "@eslint/js": "^9.21.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^10.2.0",
+    "dotenv": "^17.2.3",
     "eslint": "^9.21.0",
     "eslint-plugin-vue": "~10.0.0",
     "ftp": "^0.3.10",
