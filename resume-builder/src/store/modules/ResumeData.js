@@ -24,6 +24,9 @@ export default {
     coverLetter(state) {
       return state.coverLetter || { body: '' };
       // return state.coverLetter;
+    },
+    editDialog(state) {
+      return state.editDialog;
     }
   },
 
@@ -53,11 +56,10 @@ export default {
       const updatedResume = {
         ...state.resume,
         contact: {
-      ...state.resume.contact,
-      summary: formData.summary,
-      summaryHeading: formData.summaryHeading
-    }
-    
+          ...state.resume.contact,
+          summary: formData.description,
+          summaryHeading: formData.heading
+        }
       };
       commit('SET_RESUME', updatedResume);
     }

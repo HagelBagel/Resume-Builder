@@ -4,9 +4,9 @@
       <template v-slot:header>Education</template>
       <template v-slot:body>
         <div>
-          <p>{{ education.degree }}</p>
-          <p>{{ education.institution }}</p>
-          <p>{{ education.dates }}</p>
+          <p><b>What: </b>{{ education.degree }}</p>
+          <p><b>Where: </b>{{ education.institution }}</p>
+          <p><b>When: </b>{{ education.dates }}</p>
         </div>
       </template>
     </base-about-card>

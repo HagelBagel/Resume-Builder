@@ -11,26 +11,12 @@
         </div>
       </div>
       <form class="dialog-form-wrapper flex flex-col gap-4 p-2">
-        <div v-if="hasHeading" class="form-elem-wrapper">
-          <label for="cardHeading">Heading:</label>
-          <input
-            type="text"
-            name="cardHeading"
-            v-model="formData.summaryHeading"
-            class="edit-input px-2"
-            placeholder="Heading goes here"
-          />
-        </div>
-        <div v-if="hasTextArea" class="form-elem-wrapper">
-          <label for="cardTextArea">Description:</label>
-          <textarea
-            name="cardTextArea"
-            v-model="formData.summary"
-            rows="4"
-            cols="30"
-            class="edit-textarea"
-          ></textarea>
-        </div>
+        <component 
+          :is="editComponent" 
+          v-model="formData"
+          :initial-data="currentData"
+          @update:modelValue="handleFormUpdate"
+        />
       </form>
       <div class="dialog-buttons flex justify-end flex-col sm:flex-row gap-4 p-2">
         <base-button @click="cancel" :buttonText="'Cancel'" class="cancel-btn"></base-button>
@@ -43,22 +29,24 @@
 <script>
 import BaseButton from './BaseButton.vue'
 export default {
-  props: ['dialogTitle', 'currentData'],
+  props: {
+    dialogTitle: String,
+    currentData: Object,
+    editComponent: String // Name of the edit component to render
+  },
   data() {
     return {
       openDialog: true,
-      hasHeading: true,
-      hasTextArea: true,
-      formData: {
-        summaryHeading: this.currentData.summaryHeading || '',
-        summary: this.currentData.summary || '',
-      },
+      formData: {},
     }
   },
   components: {
     BaseButton,
   },
   methods: {
+    handleFormUpdate(newData) {
+      this.formData = newData
+    },
     save() {
       this.$emit('save', this.formData)
       this.openDialog = false

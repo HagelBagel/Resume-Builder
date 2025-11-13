@@ -1,6 +1,7 @@
 <template>
   <section>
     <base-about-card :edit-config="editConfig" @edit-requested="handleEditRequested">
+    <summary-edit-form v-if="false" />
       <template v-slot:header>{{ summaryHeading }}</template>
       <template v-slot:body>{{ summary }}</template>
     </base-about-card>
@@ -9,9 +10,12 @@
 
 <script>
 import BaseAboutCard from '../base/BaseAboutCard.vue'
+// import SummaryEditForm from '../about_comp/about_edit_comp/SummaryEditForm.vue'
+
 export default {
   components: {
     BaseAboutCard,
+    // SummaryEditForm,
   },
   computed: {
     summary() {
@@ -26,7 +30,7 @@ export default {
     },
     editConfig() {
       return {
-        componentType: 'summary',
+        componentType: 'SummaryEditForm',
         dialogTitle: 'Edit Summary',
         currentData: { summary: this.summary, summaryHeading: this.summaryHeading },
         fields: [
@@ -38,7 +42,6 @@ export default {
   },
   methods: {
     handleEditRequested() {
-      // console.log('Edit requested in SummaryCard', this.editConfig);
       this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
     },
   },

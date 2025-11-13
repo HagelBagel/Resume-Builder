@@ -30,9 +30,8 @@
   <base-edit-dialog 
     v-if="dialogState.isOpen"
     :dialog-title="dialogState.dialogTitle"
-    :component-type="dialogState.componentType"
+    :edit-component="dialogState.componentType"
     :current-data="dialogState.currentData"
-    :fields="dialogState.fields"
     @save="handleDialogSave"
     @cancel="handleDialogCancel"
   />
@@ -101,7 +100,7 @@ export default {
   handleDialogSave(formData) {
     // Handle save based on componentType
     const { componentType } = this.dialogState;
-    if (componentType === 'summary') {
+    if (componentType === 'SummaryEditForm') {
       this.$store.dispatch('resumeData/updateSummary', formData);
     }
     // Add other component types as needed
