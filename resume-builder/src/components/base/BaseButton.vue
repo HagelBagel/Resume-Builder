@@ -1,10 +1,10 @@
 <template>
-    <button class="text-white bg-mint-500 rounded-lg px-4 py-2">{{ buttonText }}</button>
+    <button class="border-2 border-(--border) rounded-lg px-2 py-1">{{ buttonText }}</button>
 </template>
 
 <script>
 export default {
-    props: ['buttonText']
+    props: ['buttonText']    
 }
 </script>
 

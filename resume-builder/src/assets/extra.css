@@ -1,4 +1,4 @@
-
+@import './base.css';
 
 html {
     font-family: 'Roboto Slab', sans-serif;
@@ -66,6 +66,38 @@ li.details::marker {
   content: '# ';
   font-size: 1rem;    
 }
+
+input {
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  padding: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+/* .button-primary, .button-secondary {
+  font-family: 'Roboto Slab', sans-serif;    
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color:  var(--text);
+  border: 2px solid var(--border);  
+} */
 
 
 

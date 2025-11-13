@@ -6,7 +6,14 @@ export default {
   state() {
     return {
       resume: resume,
-      coverLetter: coverLetter
+      coverLetter: coverLetter,
+      editDialog: {
+        isOpen: false,
+        componentType: null,
+        dialogTitle: '',
+        currentData: {},
+        fields: []
+      }
     }
   },
  
@@ -17,6 +24,42 @@ export default {
     coverLetter(state) {
       return state.coverLetter || { body: '' };
       // return state.coverLetter;
+    }
+  },
+
+  mutations: {
+    OPEN_EDIT_DIALOG(state, config) {
+      state.editDialog = {
+        isOpen: true,
+        ...config
+      }
+    },
+    CLOSE_EDIT_DIALOG(state) {
+      state.editDialog.isOpen = false;
+    },
+    SET_RESUME(state, updatedResume) {
+      state.resume = updatedResume;
+    }
+  },
+
+  actions: {
+    openEditDialog({ commit }, config) {
+      commit('OPEN_EDIT_DIALOG', config);
+    },
+    closeEditDialog({ commit }) {
+      commit('CLOSE_EDIT_DIALOG');
+    },
+    updateSummary({ state, commit }, formData) {
+      const updatedResume = {
+        ...state.resume,
+        contact: {
+      ...state.resume.contact,
+      summary: formData.summary,
+      summaryHeading: formData.summaryHeading
+    }
+    
+      };
+      commit('SET_RESUME', updatedResume);
     }
   }
 }

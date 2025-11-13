@@ -2,7 +2,7 @@
   <div class="flex flex-col lg:flex-row gap-4 lg:gap-8">
     <div class="lg:w-1/3">
       <h1 class="text-xl sm:text-2xl lg:text-3xl mb-4">About Me:</h1>
-      <div class="mt-2 sm:mt-4 lg:mt-6">
+      <div class="mt-2 sm:mt-4 lg:mt-6">        
         <summary-card></summary-card>
         <projects-card></projects-card>
         <div>
@@ -43,7 +43,7 @@ export default {
     ProjectsCard,
     EducationCard,
     SkillsCard,
-    LanguageCard,
+    LanguageCard
   },
   computed: {
     experience() {

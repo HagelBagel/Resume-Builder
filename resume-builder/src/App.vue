@@ -27,6 +27,15 @@
         <resume-view v-if="displayResume"></resume-view>
       </div>
     </div>
+  <base-edit-dialog 
+    v-if="dialogState.isOpen"
+    :dialog-title="dialogState.dialogTitle"
+    :component-type="dialogState.componentType"
+    :current-data="dialogState.currentData"
+    :fields="dialogState.fields"
+    @save="handleDialogSave"
+    @cancel="handleDialogCancel"
+  />
   </div>
 </template>
 
@@ -36,6 +45,7 @@ import CoverLetterView from './views/CoverLetterView.vue'
 import GlobalNav from './components/GlobalNav.vue'
 import GlobalHeader from './components/GlobalHeader.vue'
 import TopBar from './components/TopBar.vue'
+import BaseEditDialog from './components/base/BaseEditDialog.vue'
 
 export default {
  
@@ -51,17 +61,21 @@ export default {
     GlobalHeader,
     ResumeView,
     CoverLetterView,
-    TopBar
+    TopBar,
+    BaseEditDialog,
   },
   computed: {
     resume() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['resumeData/resume']      
       return resume || { contact: {} }; //null check
     },
     coverLetter() {
       const coverLetter = this.$store.getters['resumeData/coverLetter']
       return coverLetter || { body: '' }; //null check
     },
+    dialogState() {
+    return this.$store.state.resumeData.editDialog;
+  }
   },
   mounted() {
     // Simulate data loading complete
@@ -84,6 +98,19 @@ export default {
         this.displayResume = false
       }
     },   
+  handleDialogSave(formData) {
+    // Handle save based on componentType
+    const { componentType } = this.dialogState;
+    if (componentType === 'summary') {
+      this.$store.dispatch('resumeData/updateSummary', formData);
+    }
+    // Add other component types as needed
+    
+    this.$store.dispatch('resumeData/closeEditDialog');
+  },
+  handleDialogCancel() {
+    this.$store.dispatch('resumeData/closeEditDialog');
+  }
   },
 }
 </script>

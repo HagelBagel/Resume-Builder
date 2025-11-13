@@ -8,5 +8,7 @@
   --base-width: 55rem;
   --text: rgb(61, 61, 65);
   --border: rgb(115, 115, 122);
+  --input-bg: rgb(255, 255, 255);
+  --input-border: rgb(200, 200, 208);
   --shadow: -2px 4px 15px 1px #949494;  
 }

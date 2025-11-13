@@ -9,9 +9,11 @@ export const resume = {
         linkText: 'blinkedin.com/in/elisedubois',
         linkUrl: '#'
       },
+      summaryHeading: 'Summary',
       summary:
         'Highly motivated and creative Front-End Developer with 5+ years of experience building responsive and user-friendly web applications.',
     },
+    skillsHeading: 'Skills',
     skills: {
       languages: ['JavaScript', 'HTML5', 'CSS3', 'Less'],
       frameworks: ['Vue.js', 'React.js'],
@@ -60,11 +62,13 @@ export const resume = {
         ],
       },
     ],
+    educationHeading: 'Education',
     education: {
       degree: 'Bachelor of Science in Web Development',
       institution: 'Université Paris-Saclay, Paris, France',
       dates: '2015 – 2019',
     },
+    projectsHeading: 'Projects',
     projects: [
       {
         name: 'Personal Portfolio Website',
@@ -77,6 +81,7 @@ export const resume = {
         url: '#'
       },
     ],
+    languagesHeading: 'Languages',
     languages: ['French: Native', 'English: Fluent'],
   }
 
