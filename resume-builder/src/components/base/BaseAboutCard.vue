@@ -2,7 +2,7 @@
   <div class="w-full lg:w-50 mt-2 mb-6">
     <h2 class="font-semibold underline decoration-2 mt-2 mb-2" v-if="$slots.header">
       <slot name="header"></slot>
-      <span @click="handleEditClick" v-if="isEditMode" class="iconBtn material-symbols-outlined"
+      <span v-if="isEditMode" @click="handleEditClick" class="iconBtn material-symbols-outlined"
         >edit</span
       >
     </h2>

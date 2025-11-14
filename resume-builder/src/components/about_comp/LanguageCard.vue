@@ -1,7 +1,8 @@
 <template>
   <section>
-    <base-about-card>
-      <template v-slot:header>Languages</template>
+    <base-about-card :edit-config="editConfig" @edit-requested="handleEditRequested">
+      <language-edit-form v-if="false" />
+      <template v-slot:header>{{languagesHeading}}</template>
       <template v-slot:body>
         <div v-for="language in languages" :key="language">
             <p class="mb-2">{{language}}</p>            
@@ -21,7 +22,29 @@ export default {
     languages() {
       const resume = this.$store.getters['resumeData/resume']
       const languages = resume.languages
+      console.log("Languages in LanguageCard:", languages);
       return Array.isArray(languages) ? languages : [];
+    },
+    languagesHeading() {
+      const resume = this.$store.getters['resumeData/resume']
+      const heading = resume.languagesHeading
+      return heading ? heading : 'Languages'
+    },
+    editConfig() {
+      return {
+        componentType: 'LanguageEditForm',
+        dialogTitle: 'Edit Languages',
+        currentData: { languages: this.languages, languagesHeading: this.languagesHeading },
+        fields: [
+          { name: 'languagesHeading', label: 'Heading', type: 'text' },
+          { name: 'languages', label: 'Languages', type: 'textarea' },
+        ],
+      }
+    },
+  },
+  methods: {
+    handleEditRequested() {
+      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
     },
   },
 }

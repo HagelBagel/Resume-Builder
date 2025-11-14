@@ -23,8 +23,8 @@
           :email="resume.contact.email"
           :linkedin="resume.contact.linkedin"
         ></global-header>
-        <cover-letter-view v-if="displayCoverLetter"></cover-letter-view>
         <resume-view v-if="displayResume"></resume-view>
+        <cover-letter-view v-if="displayCoverLetter"></cover-letter-view>
       </div>
     </div>
   <base-edit-dialog 
@@ -50,8 +50,8 @@ export default {
  
   data() {
     return {
-      displayCoverLetter: true,
       displayResume: true,
+      displayCoverLetter: false,
       isLoading: false,
     }
   },
@@ -102,6 +102,8 @@ export default {
     const { componentType } = this.dialogState;
     if (componentType === 'SummaryEditForm') {
       this.$store.dispatch('resumeData/updateSummary', formData);
+    } else if (componentType === 'LanguageEditForm') {
+      this.$store.dispatch('resumeData/updateLanguages', formData);
     }
     // Add other component types as needed
     

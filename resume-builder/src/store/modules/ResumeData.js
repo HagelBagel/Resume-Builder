@@ -62,6 +62,14 @@ export default {
         }
       };
       commit('SET_RESUME', updatedResume);
+    },
+    updateLanguages({ state, commit }, formData) {
+      const updatedResume = {
+        ...state.resume,
+        languages: formData.languages,
+        languagesHeading: formData.heading
+      };
+      commit('SET_RESUME', updatedResume);
     }
   }
 }
