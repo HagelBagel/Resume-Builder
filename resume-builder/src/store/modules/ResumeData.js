@@ -11,6 +11,7 @@ export default {
         isOpen: false,
         componentType: null,
         dialogTitle: '',
+        dialogWidth: '',
         currentData: {},
         fields: []
       }

@@ -37,7 +37,7 @@ export default {
         currentData: { languages: this.languages, languagesHeading: this.languagesHeading },
         fields: [
           { name: 'languagesHeading', label: 'Heading', type: 'text' },
-          { name: 'languages', label: 'Languages', type: 'textarea' },
+          { name: 'languages', label: 'Languages', type: 'text' },
         ],
       }
     },

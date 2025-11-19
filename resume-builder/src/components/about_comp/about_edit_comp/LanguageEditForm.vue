@@ -10,17 +10,26 @@
         placeholder="Heading goes here"
       />
     </div>
-    
+
     <div class="form-elem-wrapper mb-4">
-      <label class="block text-sm font-medium mb-2">Languages ({{ localData.languages?.length || 0 }}):</label>
-      
+      <label class="block text-sm font-medium mb-2"
+        >Languages ({{ localData.languages?.length || 0 }}):</label
+      >
+
       <!-- Show message if no languages -->
-      <div v-if="!localData.languages || localData.languages.length === 0" class="text-gray-500 mb-2">
+      <div
+        v-if="!localData.languages || localData.languages.length === 0"
+        class="text-gray-500 mb-2"
+      >
         No languages added yet. Click "Add Language" to get started.
       </div>
-      
+
       <!-- Languages list -->
-      <div v-for="(language, index) in localData.languages" :key="`lang-${index}`" class="flex items-center mb-2">
+      <div
+        v-for="(language, index) in localData.languages"
+        :key="`lang-${index}`"
+        class="flex items-center mb-2"
+      >
         <input
           type="text"
           :value="language"
@@ -28,39 +37,42 @@
           class="edit-input flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Language name"
         />
-        <button 
+        <base-button
           type="button"
+          :buttonText="'Remove'"
           @click="removeLanguage(index)"
-          class="ml-2 px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-        >
-          Remove
-        </button>
+          class=" ml-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+        ></base-button>
+        
       </div>
-      <button 
+      <base-button
         type="button"
         @click="addLanguage"
-        class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Add Language
-      </button>
+        :buttonText="'Add language'"
+        class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+      ></base-button>
     </div>
   </div>
 </template>
 
 <script>
+import BaseButton from '../../base/BaseButton.vue'
 export default {
+  components: {
+    BaseButton,
+  },
   name: 'LanguageEditForm',
   props: {
     modelValue: Object,
-    initialData: Object
+    initialData: Object,
   },
   emits: ['update:modelValue'],
   data() {
     return {
       localData: {
         heading: this.initialData?.languagesHeading || '',
-        languages: [...(this.initialData?.languages || [])]
-      }
+        languages: [...(this.initialData?.languages || [])],
+      },
     }
   },
   methods: {
@@ -70,14 +82,14 @@ export default {
       newLanguages[index] = value
       this.localData = {
         ...this.localData,
-        languages: newLanguages
+        languages: newLanguages,
       }
     },
     addLanguage() {
       // Create a new array to ensure reactivity
       this.localData = {
         ...this.localData,
-        languages: [...this.localData.languages, '']
+        languages: [...this.localData.languages, ''],
       }
     },
     removeLanguage(index) {
@@ -86,9 +98,9 @@ export default {
       newLanguages.splice(index, 1)
       this.localData = {
         ...this.localData,
-        languages: newLanguages
+        languages: newLanguages,
       }
-    }
+    },
   },
   watch: {
     localData: {
@@ -96,8 +108,8 @@ export default {
         this.$emit('update:modelValue', newVal)
       },
       deep: true,
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 }
 </script>

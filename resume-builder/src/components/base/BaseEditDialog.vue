@@ -2,7 +2,8 @@
   <section class="relative">
     <div
       v-if="openDialog"
-      class="dialog-wrapper fixed top-20 left-20 bg-white border-2 border-(--border) shadow-xl max-w-md mx-auto"
+      class="dialog-wrapper fixed top-20 left-20 bg-white border-2 border-(--border) shadow-xl mx-auto"
+      :class="dialogWidth"
     >
       <div class="heading-content px-2 py-1 bg-mint-200 flex justify-between items-center">
         <div class="dialog-header">{{ dialogTitle }}</div>
@@ -32,7 +33,11 @@ export default {
   props: {
     dialogTitle: String,
     currentData: Object,
-    editComponent: String // Name of the edit component to render
+    editComponent: String, // Name of the edit component to render
+    dialogWidth: {
+      type: String,
+      default: 'max-w-md'
+    }
   },
   data() {
     return {

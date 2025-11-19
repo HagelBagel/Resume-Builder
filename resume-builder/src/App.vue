@@ -30,6 +30,7 @@
   <base-edit-dialog 
     v-if="dialogState.isOpen"
     :dialog-title="dialogState.dialogTitle"
+    :dialog-width="dialogState.dialogWidth"
     :edit-component="dialogState.componentType"
     :current-data="dialogState.currentData"
     @save="handleDialogSave"
