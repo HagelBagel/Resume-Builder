@@ -37,14 +37,14 @@
           <div class="project-wrapper flex flex-col">
             <div>
               <ul class="project-item-list max-h-64 mt-4">
-                <li class="project-item-wrapper flex flex-col">
-                  <div class="project-item flex flex-row gap-1 mb-2" @click="toggleProject(index)">
+                <li class="project-item-wrapper flex flex-col border-l-4 pl-3" :class="selectedProjectIndex === index ? 'border-mint-500' : 'border-mint-200'">
+                  <div class="project-item flex flex-row gap-1 items-center cursor-pointer" @click="toggleProject(index)">
                     <base-icon-btn
                       type="button"
-                      @click="removeProject(index)"
+                      @click.stop="removeProject(index)"
                       :iconString="'delete'"
                     ></base-icon-btn>
-                    <span class="project-name ml-2 font-medium">{{ project.name }}</span>
+                    <span class="project-name ml-2 font-medium">{{ project.name || 'Untitled Project' }}</span>
                   </div>
                   <div
                     class="project-item-editor flex flex-col gap-2 mb-2"

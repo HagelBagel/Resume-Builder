@@ -91,13 +91,20 @@ textarea {
   overflow: scroll;
 }
 
-/* .button-primary, .button-secondary {
-  font-family: 'Roboto Slab', sans-serif;    
-  padding: 0.5rem 1rem;
+.buttonized-link {
+  font-family: 'Roboto Slab', sans-serif;   
+  font-size: .8rem;  
+  background-color: var(--color-mint-200); 
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.3rem;
+  width:fit-content;
   cursor: pointer;
-  color:  var(--text);
-  border: 2px solid var(--border);  
-} */
+  box-shadow: var(--shadow-light);
+} 
+
+.buttonized-link:hover {   
+  box-shadow: none;
+} 
 
 
 

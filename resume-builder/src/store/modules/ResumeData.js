@@ -71,6 +71,14 @@ export default {
         languagesHeading: formData.heading
       };
       commit('SET_RESUME', updatedResume);
+    },
+    updateProjects({ state, commit }, formData) {
+      const updatedResume = {
+        ...state.resume,
+        projects: formData.projects,
+        projectsHeading: formData.heading
+      };
+      commit('SET_RESUME', updatedResume);
     }
   }
 }

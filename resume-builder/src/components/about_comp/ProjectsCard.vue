@@ -4,10 +4,11 @@
     <projects-edit-form v-if="false" />
       <template v-slot:header>{{projectsHeading}}</template>
       <template v-slot:body>
-        <div v-for="project in projects" :key="project">
+        <div v-for="project in projects" :key="project" class="mb-8">
             <p class="font-bold mb-2">{{project.name}}:</p>
             <p class="mb-2">{{project.description}}</p>
-            <a href="url" target="_blank" v-if="project.url" class="flex flex-row gap-2 mb-2">
+            <a href="url" target="_blank" v-if="project.url" class="buttonized-link flex flex-row gap-2 mb-2">
+              <b>LIVE DEMO</b>
               <base-icon-btn type="button" :iconString="'link'"></base-icon-btn>
             </a>
         </div>        
@@ -40,7 +41,6 @@ export default {
         componentType: 'ProjectsEditForm',
         dialogTitle: 'Edit Projects',
         currentData: { projects: this.projects, projectsHeading: this.projectsHeading },
-        dialogWidth: 'w-2xl',
         fields: [
           { name: 'projectsHeading', label: 'Heading', type: 'text' },
           { name: 'projects', label: 'Projects', type: 'textarea' },

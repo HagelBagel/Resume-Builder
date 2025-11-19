@@ -32,7 +32,7 @@ export default {
 .fabs {
   --_viewport-margin-mobile: 1rem;
   --_viewport-margin-desktop: 1.5rem;
-  --layer-1: 999;
+  --layer-1: 30;
 
   position: fixed;
   z-index: var(--layer-1);

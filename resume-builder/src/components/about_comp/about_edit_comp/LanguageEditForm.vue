@@ -37,12 +37,12 @@
           class="edit-input flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Language name"
         />
-        <base-button
+        <base-icon-button
           type="button"
-          :buttonText="'Remove'"
+          :iconString="'delete'"
           @click="removeLanguage(index)"
           class=" ml-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-        ></base-button>
+        ></base-icon-button>
         
       </div>
       <base-button
@@ -57,9 +57,11 @@
 
 <script>
 import BaseButton from '../../base/BaseButton.vue'
+import BaseIconButton from '../../base/BaseIconBtn.vue'
 export default {
   components: {
     BaseButton,
+    BaseIconButton,
   },
   name: 'LanguageEditForm',
   props: {

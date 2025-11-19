@@ -1,10 +1,10 @@
 <template>
-  <section class="relative">
-    <div
-      v-if="openDialog"
-      class="dialog-wrapper fixed top-20 left-20 bg-white border-2 border-(--border) shadow-xl mx-auto"
-      :class="dialogWidth"
-    >
+  <div v-if="openDialog">
+    <!-- Semi-transparent overlay -->
+    <div class="fixed inset-0 bg-black opacity-30 z-50"></div>
+    
+    <!-- Dialog content -->
+    <div class="dialog-wrapper fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl mx-auto z-[1000] w-7/8 max-w-80 max-h-[90vh] overflow-y-auto">
       <div class="heading-content px-2 py-1 bg-mint-200 flex justify-between items-center">
         <div class="dialog-header">{{ dialogTitle }}</div>
         <div @click="cancel" class="icon-btn-wrapper">
@@ -12,8 +12,8 @@
         </div>
       </div>
       <form class="dialog-form-wrapper flex flex-col gap-4 p-2">
-        <component 
-          :is="editComponent" 
+        <component
+          :is="editComponent"
           v-model="formData"
           :initial-data="currentData"
           @update:modelValue="handleFormUpdate"
@@ -24,7 +24,7 @@
         <base-button @click="save" :buttonText="'Save'" class="save-btn"></base-button>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -33,11 +33,7 @@ export default {
   props: {
     dialogTitle: String,
     currentData: Object,
-    editComponent: String, // Name of the edit component to render
-    dialogWidth: {
-      type: String,
-      default: 'max-w-md'
-    }
+    editComponent: String,
   },
   data() {
     return {
