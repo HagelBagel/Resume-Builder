@@ -107,6 +107,12 @@ export default {
       this.$store.dispatch('resumeData/updateLanguages', formData);
     } else if (componentType === 'ProjectsEditForm') {
       this.$store.dispatch('resumeData/updateProjects', formData);
+    } else if (componentType === 'EducationEditForm') {
+      this.$store.dispatch('resumeData/updateEducations', formData);
+    } else if (componentType === 'ExperienceEditForm') {
+      this.$store.dispatch('resumeData/updateExperiences', formData);
+    } else if (componentType === 'SkillsEditForm') {
+      this.$store.dispatch('resumeData/updateSkills', formData);
     }
     // Add other component types as needed
     

@@ -7,7 +7,7 @@
         <div v-for="project in projects" :key="project" class="mb-8">
             <p class="font-bold mb-2">{{project.name}}:</p>
             <p class="mb-2">{{project.description}}</p>
-            <a href="url" target="_blank" v-if="project.url" class="buttonized-link flex flex-row gap-2 mb-2">
+            <a :href="project.url" v-if="project.url" class="buttonized-link flex flex-row gap-2 mb-2">
               <b>LIVE DEMO</b>
               <base-icon-btn type="button" :iconString="'link'"></base-icon-btn>
             </a>

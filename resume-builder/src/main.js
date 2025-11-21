@@ -5,6 +5,7 @@ import { createI18n } from 'vue-i18n';
 import SummaryEditForm from './components/about_comp/about_edit_comp/SummaryEditForm.vue';
 import LanguageEditForm from './components/about_comp/about_edit_comp/LanguageEditForm.vue';
 import ProjectsEditForm from './components/about_comp/about_edit_comp/ProjectsEditForm.vue';
+import EducationEditForm from './components/about_comp/about_edit_comp/EducationEditForm.vue';
 
 const i18n = createI18n({
   // something vue-i18n options here ...
@@ -16,6 +17,7 @@ const app = createApp(App)
 app.component('SummaryEditForm', SummaryEditForm)
 app.component('LanguageEditForm', LanguageEditForm)
 app.component('ProjectsEditForm', ProjectsEditForm)
+app.component('EducationEditForm', EducationEditForm)
 
 app.use(store)
 app.use(i18n)

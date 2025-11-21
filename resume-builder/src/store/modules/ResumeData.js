@@ -79,6 +79,29 @@ export default {
         projectsHeading: formData.heading
       };
       commit('SET_RESUME', updatedResume);
-    }
+    },
+    updateEducations({ state, commit }, formData) {
+      const updatedResume = {
+        ...state.resume,
+        educations: formData.educations,
+        educationHeading: formData.heading
+      };
+      commit('SET_RESUME', updatedResume);
+    },
+    updateSkills({ state, commit }, formData) {
+      const updatedResume = {
+        ...state.resume,
+        skills: formData.skills,
+        skillsHeading: formData.heading
+      };
+      commit('SET_RESUME', updatedResume);
+    },
+    updateExperiences({ state, commit }, formData) {
+      const updatedResume = {
+        ...state.resume,
+        experiences: formData.experiences
+      };
+      commit('SET_RESUME', updatedResume);
+    },
   }
 }

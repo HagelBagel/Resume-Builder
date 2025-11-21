@@ -28,7 +28,7 @@
       </div>
 
       <!-- Projects list -->
-      <div class="projects-list max-h-80 overflow-y-auto border border-gray-200 rounded-md p-2">
+      <div class="projects-list max-h-80 overflow-y-auto">
         <div
           v-for="(project, index) in localData.projects"
           :key="`lang-${index}`"

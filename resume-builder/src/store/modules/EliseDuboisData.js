@@ -63,11 +63,11 @@ export const resume = {
       },
     ],
     educationHeading: 'Education',
-    education: {
+    educations: [{
       degree: 'Bachelor of Science in Web Development',
       institution: 'Université Paris-Saclay, Paris, France',
       dates: '2015 – 2019',
-    },
+    }],
     projectsHeading: 'Projects',
     projects: [
       {
