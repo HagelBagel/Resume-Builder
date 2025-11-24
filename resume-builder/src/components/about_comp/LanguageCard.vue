@@ -22,7 +22,6 @@ export default {
     languages() {
       const resume = this.$store.getters['resumeData/resume']
       const languages = resume.languages
-      console.log("Languages in LanguageCard:", languages);
       return Array.isArray(languages) ? languages : [];
     },
     languagesHeading() {

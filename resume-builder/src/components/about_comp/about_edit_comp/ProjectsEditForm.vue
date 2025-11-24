@@ -178,6 +178,16 @@ export default {
     },
   },
   watch: {
+    initialData: {
+    handler(newVal) {
+      this.localData = {
+        heading: newVal.projectsHeading || '',
+        projects: [...(newVal.projects || [])],
+      };
+    },
+    deep: true,
+    immediate: true,
+  },
     localData: {
       handler(newVal) {
         this.$emit('update:modelValue', newVal)

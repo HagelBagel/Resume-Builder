@@ -1,7 +1,8 @@
 <template>
   <section>
-    <base-about-card>
-      <template v-slot:header>Skills</template>
+    <base-about-card :edit-config="editConfig" @edit-requested="handleEditRequested">
+      <skills-edit-form v-if="false" />
+      <template v-slot:header>{{ heading }}</template>
       <template v-slot:body>
         <p class="font-bold mb-2">Languages:</p>
         <div class="flex flex-wrap">
@@ -33,16 +34,40 @@
 
 <script>
 import BaseAboutCard from '../base/BaseAboutCard.vue'
+import SkillsEditForm from './about_edit_comp/SkillsEditForm.vue'
 export default {
   components: {
     BaseAboutCard,
+    SkillsEditForm,
   },
   computed: {
+    heading() {
+      const resume = this.$store.getters['resumeData/resume']
+      const heading = resume.skillsHeading      
+      return heading ? heading : ''
+    },
     skills() {
       const resume = this.$store.getters['resumeData/resume']
       const skills = resume.skills
-      // console.log(skills)
-      return skills ? skills : { languages: [], frameworks: [], tools: [] };
+      return skills ? skills : { languages: [], frameworks: [], tools: [] }
+    },
+    editConfig() {
+      return {
+        componentType: 'SkillsEditForm',
+        dialogTitle: 'Edit Skills',
+        currentData: { skills: this.skills, heading: this.heading },
+        fields: [
+          { name: 'heading', label: 'Heading', type: 'text' },
+          { name: 'skills.languages', label: 'Languages', type: 'array' },
+          { name: 'skills.frameworks', label: 'Frameworks', type: 'array' },
+          { name: 'skills.tools', label: 'Tools', type: 'array' },
+        ],
+      }
+    },
+  },
+  methods: {
+    handleEditRequested() {
+      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
     },
   },
 }
@@ -53,7 +78,7 @@ export default {
   padding: 2px 5px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .language-chip {

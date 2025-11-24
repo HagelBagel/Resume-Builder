@@ -11,7 +11,7 @@
           <span class="iconBtn material-symbols-outlined"> close </span>
         </div>
       </div>
-      <form class="dialog-form-wrapper flex flex-col gap-4 p-2">
+      <form class="dialog-form-wrapper flex flex-col gap-4 p-2">    
         <component
           :is="editComponent"
           v-model="formData"
@@ -48,7 +48,7 @@ export default {
     handleFormUpdate(newData) {
       this.formData = newData
     },
-    save() {
+    save() {      
       this.$emit('save', this.formData)
       this.openDialog = false
     },
