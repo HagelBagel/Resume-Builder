@@ -12,25 +12,26 @@
     </div>
 
     <div class="form-elem-wrapper mb-4">
-      <div class="skills-list max-h-80 overflow-y-auto">
+      <div class="skills-list max-h-80 overflow-y-auto">          
         <div class="skill-wrapper flex flex-col">
           <!-- Languages -->
           <div
-            class="language-item-wrapper flex flex-col gap-1 border-l-4 pl-3 mt-4"
-            :class="selectedSkill === 'languages' ? 'border-mint-500' : 'border-mint-200'"
+            class="skill-item-wrapper flex flex-col gap-1 border-l-4 pl-3 mt-4"
+            :class="selectedSkill === skillType ? 'border-mint-500' : 'border-mint-200'"
+             v-for="skillType in skillsConfigArray" :key="skillType"
           >
             <div class="item-header flex flex-row gap-1 items-center">
-              <span class="skill-item font-medium" @click="toggleSkill('languages')"
-                >Languages:</span
+              <span class="skill-item font-medium" @click="toggleSkill(skillType)"
+                >{{titleCase(skillType)}}:</span
               >
             </div>
-            <div class="skill-display flex flex-wrap" v-if="selectedSkill === 'languages'">
+            <div class="skill-display flex flex-wrap" v-if="selectedSkill === skillType">
               <div class="add-languages flex flex-row gap-2 mb-4">
                 <input
                   type="text"
                   v-model="newTagInput"
                   class="edit-input flex-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Type comma-separated languages"
+                  placeholder="Skills, comma-separated"
                 />
                 <base-button
                   type="button"
@@ -40,94 +41,20 @@
                 ></base-button>
               </div>
               <div
-                class="skill-chip language-chip flex flex-row align-middle"
-                v-for="skill in localData.languageArray"
+                class="skill-chip flex flex-row align-middle"
+                :class="skillType + '-chip'"
+                v-for="skill in skillArray(skillType)"
                 :key="skill"
               >
                 <span>{{ skill }}</span>
                 <base-icon-btn
                   type="button"
-                  @click="removeTag(skill, 'languageArray', $event)"
+                  @click="removeTag(skill, skillType, $event)"
                   :iconString="'close_small'"
                 ></base-icon-btn>
               </div>
             </div>
-          </div>
-          <!-- Frameworks -->
-          <div
-            class="frameworks-item-wrapper flex flex-col gap-1 border-l-4 pl-3 mt-4"
-            :class="selectedSkill === 'frameworks' ? 'border-mint-500' : 'border-mint-200'"
-          >
-            <div class="item-header flex flex-row gap-1 items-center">
-              <span class="skill-item font-medium" @click="toggleSkill('frameworks')">Frameworks:</span>
-            </div>
-            <div class="skill-display flex flex-wrap" v-if="selectedSkill === 'frameworks'">
-              <div class="add-frameworks flex flex-row gap-2 mb-4">
-                <input
-                  type="text"
-                  v-model="newTagInput"
-                  class="edit-input flex-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Type comma-separated frameworks"
-                />
-                <base-button
-                  type="button"
-                  @click="addTag(selectedSkill)"
-                  :buttonText="'Add tag'"
-                  class="focus:outline-none focus:ring-2 focus:ring-blue-500"
-                ></base-button>
-              </div>
-              <div
-                class="skill-chip frameworks-chip flex flex-row align-middle"
-                v-for="skill in localData.frameworkArray"
-                :key="skill"
-              >
-                <span>{{ skill }}</span>
-                <base-icon-btn
-                  type="button"
-                  @click="removeTag(skill, 'frameworkArray', $event)"
-                  :iconString="'close_small'"
-                ></base-icon-btn>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tools -->
-          <div
-            class="tools-item-wrapper flex flex-col gap-1 border-l-4 pl-3 mt-4"
-            :class="selectedSkill === 'tools' ? 'border-mint-500' : 'border-mint-200'"
-          >
-            <div class="item-header flex flex-row gap-1 items-center">
-              <span class="skill-item font-medium" @click="toggleSkill('tools')">Tools:</span>
-            </div>
-            <div class="skill-display flex flex-wrap" v-if="selectedSkill === 'tools'">
-              <div class="add-tools flex flex-row gap-2 mb-4">
-                <input
-                  type="text"
-                  v-model="newTagInput"
-                  class="edit-input flex-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Type comma-separated tools"
-                />
-                <base-button
-                  type="button"
-                  @click="addTag(selectedSkill)"
-                  :buttonText="'Add tag'"
-                  class="focus:outline-none focus:ring-2 focus:ring-blue-500"
-                ></base-button>
-              </div>
-              <div
-                class="skill-chip tools-chip flex flex-row align-middle"
-                v-for="skill in localData.toolsArray"
-                :key="skill"
-              >
-                <span>{{ skill }}</span>
-                <base-icon-btn
-                  type="button"
-                  @click="removeTag(skill, 'toolsArray', $event)"
-                  :iconString="'close_small'"
-                ></base-icon-btn>
-              </div>
-            </div>
-          </div>
+          </div>      
         </div>
       </div>
     </div>
@@ -159,8 +86,15 @@ export default {
       },
       selectedSkill: null,
       newTagInput: '',
-      skillsConfig: ['languages', 'frameworks', 'tools'],
+      skillsConfigArray: ['languages', 'frameworks', 'tools'],
     }
+  },
+  computed: {
+    titleCase() {
+      return (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+      }
+    },
   },
   methods: {
     toggleSkill(skillType) {
@@ -207,6 +141,16 @@ export default {
         }
       } 
     },
+    skillArray(skillType) {
+      if (skillType === 'languages') {
+        return this.localData.languageArray
+      } else if (skillType === 'frameworks') {
+        return this.localData.frameworkArray
+      } else if (skillType === 'tools') {
+        return this.localData.toolsArray
+      }
+      return []
+    },
   },
   watch: {
     initialData: {
@@ -247,7 +191,7 @@ export default {
   font-size: 0.9rem;
 }
 
-.language-chip {
+.languages-chip {
   background-color: rgb(152, 230, 204);
   border-left: 4px solid rgb(103, 168, 146);
 }
