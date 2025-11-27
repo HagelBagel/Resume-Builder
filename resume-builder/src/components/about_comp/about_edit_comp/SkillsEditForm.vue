@@ -34,7 +34,7 @@
                 />
                 <base-button
                   type="button"
-                  @click="addTag()"
+                  @click="addTag(selectedSkill)"
                   :buttonText="'Add tag'"
                   class="focus:outline-none focus:ring-2 focus:ring-blue-500"
                 ></base-button>
@@ -54,43 +54,80 @@
             </div>
           </div>
           <!-- Frameworks -->
-          <!-- <div
+          <div
             class="frameworks-item-wrapper flex flex-col gap-1 border-l-4 pl-3 mt-4"
             :class="selectedSkill === 'frameworks' ? 'border-mint-500' : 'border-mint-200'"
-            @click="toggleSkill('frameworks')"
           >
             <div class="item-header flex flex-row gap-1 items-center">
-              <span class="skill-item ml-2 font-medium">Frameworks:</span>
+              <span class="skill-item font-medium" @click="toggleSkill('frameworks')">Frameworks:</span>
             </div>
             <div class="skill-display flex flex-wrap" v-if="selectedSkill === 'frameworks'">
-              <span
-                class="skill-chip frameworks-chip"
+              <div class="add-frameworks flex flex-row gap-2 mb-4">
+                <input
+                  type="text"
+                  v-model="newTagInput"
+                  class="edit-input flex-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Type comma-separated frameworks"
+                />
+                <base-button
+                  type="button"
+                  @click="addTag(selectedSkill)"
+                  :buttonText="'Add tag'"
+                  class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+                ></base-button>
+              </div>
+              <div
+                class="skill-chip frameworks-chip flex flex-row align-middle"
                 v-for="skill in localData.frameworkArray"
                 :key="skill"
-                >{{ skill }}</span
               >
-              <base-button>Dummy</base-button>
+                <span>{{ skill }}</span>
+                <base-icon-btn
+                  type="button"
+                  @click="removeTag(skill, 'frameworkArray', $event)"
+                  :iconString="'close_small'"
+                ></base-icon-btn>
+              </div>
             </div>
-          </div> -->
+          </div>
+
           <!-- Tools -->
-          <!-- <div
+          <div
             class="tools-item-wrapper flex flex-col gap-1 border-l-4 pl-3 mt-4"
             :class="selectedSkill === 'tools' ? 'border-mint-500' : 'border-mint-200'"
-            @click="toggleSkill('tools')"
           >
             <div class="item-header flex flex-row gap-1 items-center">
-              <span class="skill-item ml-2 font-medium">Tools:</span>
+              <span class="skill-item font-medium" @click="toggleSkill('tools')">Tools:</span>
             </div>
             <div class="skill-display flex flex-wrap" v-if="selectedSkill === 'tools'">
-              <span
-                class="skill-chip tools-chip"
+              <div class="add-tools flex flex-row gap-2 mb-4">
+                <input
+                  type="text"
+                  v-model="newTagInput"
+                  class="edit-input flex-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Type comma-separated tools"
+                />
+                <base-button
+                  type="button"
+                  @click="addTag(selectedSkill)"
+                  :buttonText="'Add tag'"
+                  class="focus:outline-none focus:ring-2 focus:ring-blue-500"
+                ></base-button>
+              </div>
+              <div
+                class="skill-chip tools-chip flex flex-row align-middle"
                 v-for="skill in localData.toolsArray"
                 :key="skill"
-                >{{ skill }}</span
               >
-              <base-button>Dummy</base-button>
+                <span>{{ skill }}</span>
+                <base-icon-btn
+                  type="button"
+                  @click="removeTag(skill, 'toolsArray', $event)"
+                  :iconString="'close_small'"
+                ></base-icon-btn>
+              </div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -122,6 +159,7 @@ export default {
       },
       selectedSkill: null,
       newTagInput: '',
+      skillsConfig: ['languages', 'frameworks', 'tools'],
     }
   },
   methods: {
@@ -134,18 +172,31 @@ export default {
         this.selectedSkill = this.selectedSkill === 'tools' ? null : 'tools'
       }
     },
-    addTag() {
+    addTag(selectedSkill) {
       if (!this.newTagInput) return
       const tags = this.newTagInput
         .split(',')
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0)
-      this.localData.languageArray = [
-        ...this.localData.languageArray,
-        ...tags.filter((tag) => !this.localData.languageArray.includes(tag)),
-      ]
+        // only add tags to the selected skill array
+      if (selectedSkill === 'languages') {
+        this.localData.languageArray = [
+          ...this.localData.languageArray,
+          ...tags.filter((tag) => !this.localData.languageArray.includes(tag)),
+        ]
+      } else if (selectedSkill === 'frameworks') {
+        this.localData.frameworkArray = [
+          ...this.localData.frameworkArray,
+          ...tags.filter((tag) => !this.localData.frameworkArray.includes(tag)),
+        ]
+      } else if (selectedSkill === 'tools') {
+        this.localData.toolsArray = [
+          ...this.localData.toolsArray,
+          ...tags.filter((tag) => !this.localData.toolsArray.includes(tag)),
+        ]
+      }
       this.newTagInput = '' // Clear input
-    },
+    },    
     removeTag(skill, parentArray, event) {
       event.stopPropagation()
       let array = this.localData[parentArray]
