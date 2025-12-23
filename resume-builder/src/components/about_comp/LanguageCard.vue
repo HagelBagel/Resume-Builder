@@ -20,12 +20,12 @@ export default {
   },
   computed: {
     languages() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const languages = resume.languages
       return Array.isArray(languages) ? languages : [];
     },
     languagesHeading() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const heading = resume.languagesHeading
       return heading ? heading : 'Languages'
     },
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     handleEditRequested() {
-      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
+      this.$store.dispatch('ResumeData/openEditDialog', this.editConfig)
     },
   },
 }

@@ -1,9 +1,9 @@
 import { createStore } from 'vuex';
-import resumeDataModule from './modules/ResumeData.js';
+import ResumeDataModule from './modules/ResumeData.js';
 
 const store = createStore({
     modules: {
-        resumeData: resumeDataModule
+        ResumeData: ResumeDataModule
     }
 });
 

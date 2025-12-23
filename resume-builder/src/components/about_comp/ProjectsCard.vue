@@ -27,12 +27,12 @@ export default {
   },
   computed: {
     projectsHeading() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const heading = resume.projectsHeading
       return heading ? heading : 'Projects'
     },
     projects() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const projects = resume.projects
       return Array.isArray(projects) ? projects : [];
     },
@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     handleEditRequested() {
-      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
+      this.$store.dispatch('ResumeData/openEditDialog', this.editConfig)
     },
   },
 }

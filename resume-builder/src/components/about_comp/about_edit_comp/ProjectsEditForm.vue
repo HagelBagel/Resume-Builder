@@ -22,7 +22,7 @@
         >Projects ({{ localData.projects?.length || 0 }}):</label
       >
 
-      <!-- Show message if no languages -->
+      <!-- Show message if no projects -->
       <div v-if="!localData.projects || localData.projects.length === 0" class="text-gray-500 mb-2">
         No projects added yet. Click "Add project" to get started.
       </div>

@@ -42,12 +42,12 @@ export default {
   },
   computed: {
     heading() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const heading = resume.skillsHeading      
       return heading ? heading : ''
     },
     skills() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const skills = resume.skills
       return skills ? skills : { languages: [], frameworks: [], tools: [] }
     },
@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     handleEditRequested() {
-      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
+      this.$store.dispatch('ResumeData/openEditDialog', this.editConfig)
     },
   },
 }

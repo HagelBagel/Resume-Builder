@@ -4,14 +4,14 @@
     <div class="fixed inset-0 bg-black opacity-30 z-50"></div>
     
     <!-- Dialog content -->
-    <div class="dialog-wrapper fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl mx-auto z-[1000] w-7/8 max-w-80 max-h-[90vh] overflow-y-auto">
+    <div class="dialog-wrapper fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl mx-auto z-[1000] max-h-[90vh]" :style="dialogWidthStyle" :class="!dialogWidth ? 'w-7/8 max-w-80' : ''">
       <div class="heading-content px-2 py-1 bg-mint-200 flex justify-between items-center">
         <div class="dialog-header">{{ dialogTitle }}</div>
         <div @click="cancel" class="icon-btn-wrapper">
           <span class="iconBtn material-symbols-outlined"> close </span>
         </div>
       </div>
-      <form class="dialog-form-wrapper flex flex-col gap-4 p-2">    
+    <form class="dialog-form-wrapper flex flex-col gap-4 p-2 overflow-y-auto max-h-[70vh]">    
         <component
           :is="editComponent"
           v-model="formData"
@@ -29,9 +29,12 @@
 
 <script>
 import BaseButton from './BaseButton.vue'
+import ExperienceEditForm from '../ExperienceEditForm.vue'
+
 export default {
   props: {
     dialogTitle: String,
+    dialogWidth: String,
     currentData: Object,
     editComponent: String,
   },
@@ -41,15 +44,24 @@ export default {
       formData: {},
     }
   },
+  computed: {
+    dialogWidthStyle() {
+      return this.dialogWidth ? { width: this.dialogWidth } : {}
+    }
+  },
   components: {
     BaseButton,
+    ExperienceEditForm,
   },
   methods: {
     handleFormUpdate(newData) {
       this.formData = newData
     },
     save() {      
-      this.$emit('save', this.formData)
+      this.$emit('save', {
+      formData: this.formData,
+      index: this.$store.getters['ResumeData/editDialog'].index
+    })
       this.openDialog = false
     },
     cancel() {

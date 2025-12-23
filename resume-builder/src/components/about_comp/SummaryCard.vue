@@ -19,12 +19,12 @@ export default {
   },
   computed: {
     summary() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const summary = resume.contact.summary
       return summary ? summary : 'No summary provided.'
     },
     summaryHeading() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const heading = resume.contact.summaryHeading
       return heading ? heading : 'Summary'
     },
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     handleEditRequested() {
-      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
+      this.$store.dispatch('ResumeData/openEditDialog', this.editConfig)
     },
   },
 }

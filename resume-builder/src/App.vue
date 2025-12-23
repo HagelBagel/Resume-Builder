@@ -66,16 +66,18 @@ export default {
   },
   computed: {
     resume() {
-      const resume = this.$store.getters['resumeData/resume']      
+      const resume = this.$store.getters['ResumeData/resume']      
       return resume || { contact: {} }; //null check
     },
     coverLetter() {
-      const coverLetter = this.$store.getters['resumeData/coverLetter']
+      const coverLetter = this.$store.getters['ResumeData/coverLetter']
       return coverLetter || { body: '' }; //null check
     },
     dialogState() {
-    return this.$store.state.resumeData.editDialog;
-  }
+      const state = this.$store.state.ResumeData.editDialog;
+      // console.log('Dialog state:', state); // Debug log
+      return state;
+    }
   },
   mounted() {
     // Simulate data loading complete
@@ -101,25 +103,26 @@ export default {
   handleDialogSave(formData) {
     // Handle save based on componentType
     const { componentType } = this.dialogState;
+    console.log('Saving data for component type:', componentType, formData);
     if (componentType === 'SummaryEditForm') {
-      this.$store.dispatch('resumeData/updateSummary', formData);
+      this.$store.dispatch('ResumeData/updateSummary', formData);
     } else if (componentType === 'LanguageEditForm') {
-      this.$store.dispatch('resumeData/updateLanguages', formData);
+      this.$store.dispatch('ResumeData/updateLanguages', formData);
     } else if (componentType === 'ProjectsEditForm') {
-      this.$store.dispatch('resumeData/updateProjects', formData);
+      this.$store.dispatch('ResumeData/updateProjects', formData);
     } else if (componentType === 'EducationEditForm') {
-      this.$store.dispatch('resumeData/updateEducations', formData);
+      this.$store.dispatch('ResumeData/updateEducations', formData);
     } else if (componentType === 'ExperienceEditForm') {
-      this.$store.dispatch('resumeData/updateExperiences', formData);
+      this.$store.dispatch('ResumeData/updateExperiences', formData);
     } else if (componentType === 'SkillsEditForm') {
-      this.$store.dispatch('resumeData/updateSkills', formData);
+      this.$store.dispatch('ResumeData/updateSkills', formData);
     }
     // Add other component types as needed
     
-    this.$store.dispatch('resumeData/closeEditDialog');
+    this.$store.dispatch('ResumeData/closeEditDialog');
   },
   handleDialogCancel() {
-    this.$store.dispatch('resumeData/closeEditDialog');
+    this.$store.dispatch('ResumeData/closeEditDialog');
   }
   },
 }

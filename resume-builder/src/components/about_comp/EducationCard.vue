@@ -21,12 +21,12 @@ export default {
   },
   computed: {
     educations() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const educations = resume.educations
       return educations ? educations : [];
     },
     educationHeading() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const heading = resume.educationHeading
       return heading ? heading : '';
     },
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     handleEditRequested() {
-      this.$store.dispatch('resumeData/openEditDialog', this.editConfig)
+      this.$store.dispatch('ResumeData/openEditDialog', this.editConfig)
     },
   },
 }

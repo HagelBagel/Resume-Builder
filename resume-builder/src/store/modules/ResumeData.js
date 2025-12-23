@@ -96,11 +96,14 @@ export default {
       };
       commit('SET_RESUME', updatedResume);
     },
-    updateExperiences({ state, commit }, formData) {
+    updateExperiences({ state, commit }, {formData, index}) {
+      const updatedExperiences = [...state.resume.experience];
+      updatedExperiences[index] = formData;
       const updatedResume = {
         ...state.resume,
-        experiences: formData.experiences
+        experience: updatedExperiences
       };
+      console.log('Formdata', formData);
       commit('SET_RESUME', updatedResume);
     },
   }

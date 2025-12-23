@@ -16,8 +16,9 @@
       <h1 class="text-xl sm:text-2xl lg:text-3xl mb-4 lg:ml-8">Resume:</h1>
       <div class="grid grid-cols-1 gap-2 sm:gap-4">
         <experience-card
-          v-for="exp in experience"
-          :key="exp"
+          v-for="(exp, index) in experience"
+          :key="index"
+          :index="index"
           :title="exp.title"
           :company="exp.company"
           :dates="exp.dates"
@@ -47,7 +48,7 @@ export default {
   },
   computed: {
     experience() {
-      const resume = this.$store.getters['resumeData/resume']
+      const resume = this.$store.getters['ResumeData/resume']
       const experience = resume.experience
       return experience ? experience : {};
     },

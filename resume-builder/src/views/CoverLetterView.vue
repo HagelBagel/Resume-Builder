@@ -9,7 +9,7 @@
 export default {
   computed: {
     savedContent() {
-      const coverLetterData = this.$store.getters['resumeData/coverLetter'];
+      const coverLetterData = this.$store.getters['ResumeData/coverLetter'];
       return coverLetterData || { body: '' };
     }
   },
